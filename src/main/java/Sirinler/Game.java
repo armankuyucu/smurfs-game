@@ -19,9 +19,7 @@ public class Game implements Runnable {
     private Thread thread;
     private BufferStrategy bs;
     private java.awt.Graphics g;
-
-    private BufferedImage Arkaplan;
-    private BufferedImage GozlukluSirin;
+    int x = 0;
 
     public Game(String title, int width, int height) {
         this.height = height;
@@ -31,13 +29,11 @@ public class Game implements Runnable {
 
     public void init() {
         display = new Display(title, width, height);
-        Arkaplan = ImageLoader.loadImage("/Arkaplan.png");
-        GozlukluSirin = ImageLoader.loadImage("/GozlukluSirin.png");
-
+        Assets.init();
     }
 
     private void update() {
-
+        x += 1;
     }
 
     private void render() {
@@ -49,8 +45,8 @@ public class Game implements Runnable {
         g = bs.getDrawGraphics();
         g.clearRect(0, 0, width, height);
 
-        g.drawImage(Arkaplan, 0,0, null);
-        g.drawImage(GozlukluSirin, 560,450, null);
+        g.drawImage(Assets.Arkaplan,0,0,null);
+        g.drawImage(Assets.GozlukluSirin,x,450,null);
 
         bs.show();
         g.dispose();
@@ -60,13 +56,30 @@ public class Game implements Runnable {
     public void run() {
         init();
 
+        int fps = 60;
+        double timePerUpdate = 1000000000 / fps;
+        double delta = 0;
+        long now;
+        long lastTime = System.nanoTime();
+        long timer = 0;
+        long updates = 0;
+
         while (running) {
-            update();
-            render();
-            try {
-                TimeUnit.MILLISECONDS.sleep(20); // Cpu kullanımını azaltmak için
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            now = System.nanoTime();
+            delta += (now - lastTime) /timePerUpdate;
+            timer += now - lastTime;
+            lastTime = now;
+
+            if(delta >= 1){
+                update();
+                render();
+                updates++;
+                delta--;
+            }
+            if(timer >= 1000000000){
+                System.out.println("Updates and Frames: " + updates);
+                updates = 0;
+                timer = 0;
             }
         }
 
