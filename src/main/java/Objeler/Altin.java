@@ -1,4 +1,4 @@
-package Sirinler;
+package Objeler;
 
 public class Altin extends Obje{
 }

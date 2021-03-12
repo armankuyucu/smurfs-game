@@ -1,4 +1,4 @@
-package Sirinler;
+package Game;
 
 /**
  *
@@ -7,7 +7,7 @@ package Sirinler;
 public class Launcher {
     Display display;
     public static void main(String[] args) {
-        Game game = new Game("Sirinler",1170, 990);
+        Game game = new Game("Game",1170, 990);
         game.start();
     }
 }

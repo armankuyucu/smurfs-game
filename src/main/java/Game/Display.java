@@ -1,9 +1,6 @@
-package Sirinler;
+package Game;
 
 import java.awt.*;
-import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import javax.swing.*;
 
 /**
@@ -37,6 +34,7 @@ public class Display extends JFrame {
         canvas.setPreferredSize(new Dimension(width,height));
         canvas.setMaximumSize(new Dimension(width,height));
         canvas.setMinimumSize(new Dimension(width,height));
+        canvas.setFocusable(false);
 
         frame.add(canvas);
         frame.pack();
@@ -45,5 +43,7 @@ public class Display extends JFrame {
     public Canvas getCanvas(){
         return canvas;
     }
+
+    public Frame getFrame(){ return frame;}
 
 }

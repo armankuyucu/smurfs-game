@@ -1,4 +1,4 @@
-package Sirinler;
+package Game;
 
 import java.awt.image.BufferedImage;
 

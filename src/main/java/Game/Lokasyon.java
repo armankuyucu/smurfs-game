@@ -1,4 +1,4 @@
-package Sirinler;
+package Game;
 
 public class Lokasyon {
 }

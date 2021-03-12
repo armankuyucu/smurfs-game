@@ -1,8 +1,6 @@
-package Sirinler;
+package Game;
 
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,22 +22,28 @@ public class Game implements Runnable {
     private State gameState;
     private State menuState;
 
+    //Input
+    private KeyManager keyManager;
     public Game(String title, int width, int height) {
         this.height = height;
         this.width = width;
         this.title = title;
+        keyManager = new KeyManager();
     }
 
     public void init() {
         display = new Display(title, width, height);
+        display.getFrame().addKeyListener(keyManager);
         Assets.init();
 
-        gameState = new GameState();
-        menuState = new GameState();
+        gameState = new GameState(this); //Passes an instance of this class
+        menuState = new GameState(this);
         State.setState(gameState);
     }
 
     private void update() {
+        keyManager.update();
+
         if(State.getState() != null){
             State.getState().update();
         }
@@ -94,6 +98,10 @@ public class Game implements Runnable {
         }
 
         stop();
+    }
+
+    public KeyManager getKeyManager(){
+        return keyManager;
     }
 
     public synchronized void start() {
