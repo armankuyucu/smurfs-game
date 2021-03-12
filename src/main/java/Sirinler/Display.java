@@ -22,40 +22,6 @@ public class Display extends JFrame {
         this.width = width;
         this.height = height;
 
-        this.addKeyListener(new KeyListener() {
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                int key = e.getKeyCode();
-                switch (key) {
-                    case KeyEvent.VK_UP:
-                        System.out.println("UP");
-                        repaint();
-                        break;
-                    case KeyEvent.VK_DOWN:
-                        System.out.println("DOWN");
-                        repaint();
-                        break;
-                    case KeyEvent.VK_LEFT:
-                        System.out.println("LEFT");
-                        repaint();
-                        break;
-                    case KeyEvent.VK_RIGHT:
-                        System.out.println("RIGHT");
-                        repaint();
-                        break;
-                }
-            }
-
-            @Override
-            public void keyTyped(KeyEvent ke) {
-            }
-
-            @Override
-            public void keyReleased(KeyEvent ke) {
-            }
-
-        });
         createDisplay();
     }
 

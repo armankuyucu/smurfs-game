@@ -19,7 +19,10 @@ public class Game implements Runnable {
     private Thread thread;
     private BufferStrategy bs;
     private java.awt.Graphics g;
-    int x = 0;
+
+    //States
+    private State gameState;
+    private State menuState;
 
     public Game(String title, int width, int height) {
         this.height = height;
@@ -30,10 +33,16 @@ public class Game implements Runnable {
     public void init() {
         display = new Display(title, width, height);
         Assets.init();
+
+        gameState = new GameState();
+        menuState = new GameState();
+        State.setState(gameState);
     }
 
     private void update() {
-        x += 1;
+        if(State.getState() != null){
+            State.getState().update();
+        }
     }
 
     private void render() {
@@ -45,8 +54,9 @@ public class Game implements Runnable {
         g = bs.getDrawGraphics();
         g.clearRect(0, 0, width, height);
 
-        g.drawImage(Assets.Arkaplan,0,0,null);
-        g.drawImage(Assets.GozlukluSirin,x,450,null);
+        if(State.getState() != null){
+            State.getState().render(g);
+        }
 
         bs.show();
         g.dispose();
