@@ -13,7 +13,7 @@ public class Oyuncu extends Karakter{
     private Game game;
 
     public Oyuncu(Game game, float x, float y, int ID, String Ad, String Tur) {
-        super(x, y,ID,Ad,Tur);
+        super(x, y,Karakter.DEFAULT_CHARACTER_WIDTH,Karakter.DEFAULT_CHARACTER_HEIGHT,ID,Ad,Tur);
         this.x = x;
         this.y=y;
         this.ID = ID;
@@ -23,20 +23,33 @@ public class Oyuncu extends Karakter{
 
     @Override
     public void update() {
+        getInput();
+        move();
+    }
+    public void move(){
+        x += xMove;
+        y += yMove;
+    }
+
+    private void getInput(){
+        xMove = 0;
+        yMove = 0;
+
         if(game.getKeyManager().up)
-            y -= 45;
+            yMove = -speed;
         if(game.getKeyManager().down)
-            y += 45;
+            yMove = speed;
         if(game.getKeyManager().left)
-            x -= 45;
+            xMove = -speed;
         if(game.getKeyManager().right)
-            x += 45;
+            xMove = speed;
     }
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.Arkaplan,0,0,null);
-        g.drawImage(Assets.GozlukluSirin,(int)x,(int)y,null);
+        //g.drawImage(Assets.Arkaplan,0,0,null);
+        g.drawImage(Assets.Sirine,1100,630,width,height,null);
+        g.drawImage(Assets.GozlukluSirin,(int)x,(int)y,width,height,null);
     }
 
 }

@@ -9,7 +9,7 @@ public abstract class Dusman extends Karakter{
     protected float x,y;
 
     public Dusman(float x, float y, int ID, String Ad, String Tur) {
-        super(x, y, ID, Ad, Tur);
+        super(x, y, Karakter.DEFAULT_CHARACTER_WIDTH,Karakter.DEFAULT_CHARACTER_HEIGHT,ID, Ad, Tur);
     }
 
 }
