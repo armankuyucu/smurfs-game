@@ -79,7 +79,7 @@ public class Game implements Runnable {
     private void render() {
         bs = display.getCanvas().getBufferStrategy();
         if(bs == null){
-            display.getCanvas().createBufferStrategy(1);
+            display.getCanvas().createBufferStrategy(2);
             return;
         }
         g = bs.getDrawGraphics();
@@ -132,6 +132,7 @@ public class Game implements Runnable {
         long timer = 0;
         long updates = 0;
 
+        //Game Loop
         while (running) {
             now = System.nanoTime();
             delta += (now - lastTime) /timePerUpdate;

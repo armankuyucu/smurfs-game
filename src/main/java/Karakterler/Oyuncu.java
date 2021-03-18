@@ -21,17 +21,12 @@ public class Oyuncu extends Karakter{
         this.game = game;
     }
 
-    @Override
-    public void update() {
-        getInput();
-        move();
-    }
     public void move(){
         x += xMove;
         y += yMove;
     }
 
-    private void getInput(){
+    public void getInput(){
         xMove = 0;
         yMove = 0;
 
@@ -46,10 +41,12 @@ public class Oyuncu extends Karakter{
     }
 
     @Override
-    public void render(Graphics g) {
-        //g.drawImage(Assets.Arkaplan,0,0,null);
-        g.drawImage(Assets.Sirine,1100,630,width,height,null);
-        g.drawImage(Assets.GozlukluSirin,(int)x,(int)y,width,height,null);
+    public void update() {
+
     }
 
+    @Override
+    public void render(Graphics g) {
+
+    }
 }
