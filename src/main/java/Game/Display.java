@@ -29,6 +29,7 @@ public class Display extends JFrame {
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.addKeyListener(new KeyboardManager());
 
         canvas = new Canvas();
         canvas.setPreferredSize(new Dimension(width,height));

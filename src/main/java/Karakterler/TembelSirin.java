@@ -10,7 +10,6 @@ public class TembelSirin extends Oyuncu{
         super(game, x, y, ID, Ad, Tur);
     }
     public void update() {
-        getInput();
         move();
     }
 

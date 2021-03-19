@@ -11,14 +11,14 @@ public abstract class Karakter {
     protected int ID;
     protected String Ad;
     protected String Tur;
-    protected float x,y;
+    public static float x,y;
     protected int width, height;
     protected float speed;
     protected float xMove, yMove;
 
     public Karakter(float x, float y, int width, int height, int ID, String Ad, String Tur){
-        this.x = x;
-        this.y = y;
+        Karakter.x = x;
+        Karakter.y = y;
         this.ID = ID;
         this.Ad = Ad;
         this.Tur = Tur;
@@ -50,22 +50,6 @@ public abstract class Karakter {
 
     public void setHeight(int height) {
         this.height = height;
-    }
-
-    public float getX() {
-        return x;
-    }
-
-    public void setX(float x) {
-        this.x = x;
-    }
-
-    public float getY() {
-        return y;
-    }
-
-    public void setY(float y) {
-        this.y = y;
     }
 
     //Getters and Setters

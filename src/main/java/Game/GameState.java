@@ -5,6 +5,8 @@ import Karakterler.Oyuncu;
 import Karakterler.TembelSirin;
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class GameState extends State{
     private Oyuncu oyuncu;
@@ -23,4 +25,5 @@ public class GameState extends State{
     public void render(Graphics g) {
         oyuncu.render(g);
     }
+
 }

@@ -25,18 +25,14 @@ public class Game implements Runnable {
     private State gameState;
     private State menuState;
 
-    //Input
-    private KeyManager keyManager;
     public Game(String title, int width, int height) {
         this.height = height;
         this.width = width;
         this.title = title;
-        keyManager = new KeyManager();
     }
 
     public void init() {
         display = new Display(title, width, height);
-        display.getFrame().addKeyListener(keyManager);
         Assets.init();
         readFileIntoArray();
         gameState = new GameState(this); //Passes an instance of this class
@@ -69,7 +65,6 @@ public class Game implements Runnable {
     }
 
     private void update() {
-        keyManager.update();
 
         if(State.getState() != null){
             State.getState().update();
@@ -124,7 +119,7 @@ public class Game implements Runnable {
     @Override
     public void run() {
         init();
-        int fps = 1;
+        int fps = 60;
         double timePerUpdate = 1000000000.d / fps;
         double delta = 0;
         long now;
@@ -153,10 +148,6 @@ public class Game implements Runnable {
         }
 
         stop();
-    }
-
-    public KeyManager getKeyManager(){
-        return keyManager;
     }
 
     public synchronized void start() {
