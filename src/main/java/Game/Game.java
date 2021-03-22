@@ -20,7 +20,6 @@ public class Game implements Runnable {
     private Thread thread;
     private BufferStrategy bs;
     private java.awt.Graphics g;
-    int[][] matrix;
     //States
     private State gameState;
     private State menuState;
@@ -34,34 +33,9 @@ public class Game implements Runnable {
     public void init() {
         display = new Display(title, width, height);
         Assets.init();
-        readFileIntoArray();
         gameState = new GameState(this); //Passes an instance of this class
         menuState = new GameState(this);
         State.setState(gameState);
-    }
-
-    public void readFileIntoArray() {
-        matrix = new int[11][13];
-
-        try {
-            Scanner sc = new Scanner(new File("res/harita.txt"));
-            sc.nextLine();
-            sc.nextLine();
-            for(int i=0;i<11;i++){
-                for(int j=0;j<13;j++){
-                    matrix[i][j] = sc.nextInt();
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        for (int i = 0; i < 11; i++) {
-            for (int j = 0; j < 13; j++) {
-                System.out.print(matrix[i][j]);
-            }
-            System.out.println();
-        }
     }
 
     private void update() {
@@ -79,7 +53,7 @@ public class Game implements Runnable {
         }
         g = bs.getDrawGraphics();
         g.clearRect(0, 0, width, height);
-
+/*
         //Haritayi Cizme
         for(int y=0;y<11;y++){
             for(int x=0;x<13;x++){
@@ -96,18 +70,18 @@ public class Game implements Runnable {
                     else{
                         g.setColor(Color.WHITE);
                     }
-                    g.fillRect(x*90,y*90,90,90);
+                    g.fillRect(x*64,y*64,64,64);
                 }
                 else if(matrix[y][x] == 0){
                     g.setColor(Color.DARK_GRAY);
-                    g.fillRect(x*90,y*90,90,90);
+                    g.fillRect(x*64,y*64,64,64);
                 }
                 g.setColor(Color.BLACK);
-                g.drawLine(0,y*90,1170,y*90); // x ekseni
-                g.drawLine(x*90,0,x*90,990);  // y ekseni
+                g.drawLine(0,y*64,832,y*64); // x ekseni
+                g.drawLine(x*64,0,x*64,704);  // y ekseni
             }
         }
-
+*/
         if(State.getState() != null){
             State.getState().render(g);
         }

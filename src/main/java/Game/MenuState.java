@@ -1,8 +1,5 @@
 package Game;
 
-import Karakterler.GozlukluSirin;
-
-import javax.swing.*;
 import java.awt.*;
 
 public class MenuState extends State{
