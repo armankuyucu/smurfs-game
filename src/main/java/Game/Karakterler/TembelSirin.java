@@ -6,9 +6,10 @@ import java.awt.*;
 
 public class TembelSirin extends Oyuncu{
 
-    public TembelSirin(Game game, float x, float y, int ID, String Ad, String Tur) {
-        super(game, x, y, ID, Ad, Tur);
+    public TembelSirin(Game game, float x, float y, int sira, int sutun, int ID, String Ad, String Tur) {
+        super(game, x, y, sira, sutun, ID, Ad, Tur);
     }
+
     public void update() {
         move();
     }

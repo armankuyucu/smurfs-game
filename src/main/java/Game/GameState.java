@@ -12,12 +12,12 @@ import java.util.Scanner;
 
 public class GameState extends State{
     private Oyuncu oyuncu;
-    int[][] matrix;
+    public static int[][] matrix;
 
     public GameState(Game game){
         super(game);
         //oyuncu = new GozlukluSirin(game,395,320, 0, "GozlukluSirin", "Oyuncu");
-        oyuncu = new TembelSirin(game,390,315, 1, "TembelSirin", "Oyuncu");
+        oyuncu = new TembelSirin(game,390,315, 5,6,1, "TembelSirin", "Oyuncu");
         readFileIntoArray();
     }
 
