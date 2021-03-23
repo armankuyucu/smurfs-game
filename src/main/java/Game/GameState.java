@@ -16,8 +16,10 @@ public class GameState extends State{
 
     public GameState(Game game){
         super(game);
-        //oyuncu = new GozlukluSirin(game,395,320, 0, "GozlukluSirin", "Oyuncu");
-        oyuncu = new TembelSirin(game,390,315, 5,6,1, "TembelSirin", "Oyuncu");
+        if(MenuState.ButtonID == 1)
+            oyuncu = new GozlukluSirin(game,395,320, 5,6,1, "GozlukluSirin", "Oyuncu");
+        if(MenuState.ButtonID == 2)
+            oyuncu = new TembelSirin(game,390,315, 5,6,2, "TembelSirin", "Oyuncu");
         readFileIntoArray();
     }
 
@@ -75,12 +77,6 @@ public class GameState extends State{
             e.printStackTrace();
         }
 
-        for (int i = 0; i < 11; i++) {
-            for (int j = 0; j < 13; j++) {
-                System.out.print(matrix[i][j]);
-            }
-            System.out.println();
-        }
     }
 
 }

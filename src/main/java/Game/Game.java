@@ -20,22 +20,33 @@ public class Game implements Runnable {
     private Thread thread;
     private BufferStrategy bs;
     private java.awt.Graphics g;
+    private MouseManager mouseManager;
+
     //States
-    private State gameState;
-    private State menuState;
+    public State gameState;
+    public State menuState;
+
+    public MouseManager getMouseManager() {
+        return mouseManager;
+    }
 
     public Game(String title, int width, int height) {
         this.height = height;
         this.width = width;
         this.title = title;
+        mouseManager = new MouseManager();
     }
 
     public void init() {
         display = new Display(title, width, height);
+        display.getFrame().addMouseListener(mouseManager);
+        display.getFrame().addMouseMotionListener(mouseManager);
+        display.getCanvas().addMouseListener(mouseManager);
+        display.getCanvas().addMouseMotionListener(mouseManager);
+
         Assets.init();
-        gameState = new GameState(this); //Passes an instance of this class
-        menuState = new GameState(this);
-        State.setState(gameState);
+        menuState = new MenuState(this); //Passes an instance of this class
+        State.setState(menuState);
     }
 
     private void update() {
@@ -53,35 +64,7 @@ public class Game implements Runnable {
         }
         g = bs.getDrawGraphics();
         g.clearRect(0, 0, width, height);
-/*
-        //Haritayi Cizme
-        for(int y=0;y<11;y++){
-            for(int x=0;x<13;x++){
-                if(matrix[y][x] == 1){
-                    //Kapilar
-                    if(y==5 && x==0 || x==3 && y==0 || x==3 && y==10 || x==10 && y==0){
-                        g.setColor(Color.PINK);
-                    }
-                    //Baslangic Noktasi
-                    else if(y==5 && x==6){
-                        g.setColor(Color.BLUE);
-                    }
-                    //Bosluklar
-                    else{
-                        g.setColor(Color.WHITE);
-                    }
-                    g.fillRect(x*64,y*64,64,64);
-                }
-                else if(matrix[y][x] == 0){
-                    g.setColor(Color.DARK_GRAY);
-                    g.fillRect(x*64,y*64,64,64);
-                }
-                g.setColor(Color.BLACK);
-                g.drawLine(0,y*64,832,y*64); // x ekseni
-                g.drawLine(x*64,0,x*64,704);  // y ekseni
-            }
-        }
-*/
+
         if(State.getState() != null){
             State.getState().render(g);
         }
@@ -98,26 +81,17 @@ public class Game implements Runnable {
         double delta = 0;
         long now;
         long lastTime = System.nanoTime();
-        long timer = 0;
-        long updates = 0;
 
         //Game Loop
         while (running) {
             now = System.nanoTime();
             delta += (now - lastTime) /timePerUpdate;
-            timer += now - lastTime;
             lastTime = now;
 
             if(delta >= 1){
                 update();
                 render();
-                updates++;
                 delta--;
-            }
-            if(timer >= 1000000000){
-                System.out.println("Updates and Frames: " + updates);
-                updates = 0;
-                timer = 0;
             }
         }
 

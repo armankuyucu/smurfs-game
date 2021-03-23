@@ -45,6 +45,14 @@ public class Display extends JFrame {
         return canvas;
     }
 
+    public void setFrame(JFrame frame) {
+        this.frame = frame;
+    }
+
+    public void setCanvas(Canvas canvas) {
+        this.canvas = canvas;
+    }
+
     public Frame getFrame(){ return frame;}
 
 }
