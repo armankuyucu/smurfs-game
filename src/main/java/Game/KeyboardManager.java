@@ -27,9 +27,9 @@ public class KeyboardManager implements KeyListener{
                     Oyuncu.sira--;
 
                     if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
-                        Karakter.y -= 64;
+                        Oyuncu.y -= 64;
                     else
-                        Oyuncu.sira++;;
+                        Oyuncu.sira++;
                 }
                 else if(MenuState.ButtonID == 1){
                     siraTemp = Oyuncu.sira - 2;
@@ -40,14 +40,14 @@ public class KeyboardManager implements KeyListener{
                     if(GameState.matrix[siraTemp][sutunTemp] == 1 && (siraTemp > 0 && sutunTemp < 11)){
                         Oyuncu.sira--;
                         if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
-                            Karakter.y -= 64;
+                            Oyuncu.y -= 64;
                         else
                             Oyuncu.sira++;
                         Oyuncu.sira--;
                         if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
-                            Karakter.y -= 64;
+                            Oyuncu.y -= 64;
                         else
-                            Oyuncu.sira++;;
+                            Oyuncu.sira++;
                     }
                 }
             }
@@ -63,23 +63,23 @@ public class KeyboardManager implements KeyListener{
                     Oyuncu.sira++;
 
                     if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
-                        Karakter.y += 64;
+                        Oyuncu.y += 64;
                     else
-                        Oyuncu.sira--;;
+                        Oyuncu.sira--;
                 }
 
                 else if(MenuState.ButtonID == 1){
                     if(GameState.matrix[siraTemp][sutunTemp] == 1){
                         Oyuncu.sira++;
                         if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
-                            Karakter.y += 64;
+                            Oyuncu.y += 64;
                         else
                             Oyuncu.sira--;
                         Oyuncu.sira++;
                         if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
-                            Karakter.y += 64;
+                            Oyuncu.y += 64;
                         else
-                            Oyuncu.sira--;;
+                            Oyuncu.sira--;
                     }
 
                 }
@@ -97,7 +97,7 @@ public class KeyboardManager implements KeyListener{
                         Oyuncu.sutun--;
 
                         if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
-                            Karakter.x -= 64;
+                            Oyuncu.x -= 64;
                         else
                             Oyuncu.sutun++;
                     }
@@ -106,13 +106,13 @@ public class KeyboardManager implements KeyListener{
                         if(GameState.matrix[siraTemp][sutunTemp] == 1){
                             Oyuncu.sutun--;
                             if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
-                                Karakter.x -= 64;
+                                Oyuncu.x -= 64;
                             else
                                 Oyuncu.sutun++;
 
                             Oyuncu.sutun--;
                             if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
-                                Karakter.x -= 64;
+                                Oyuncu.x -= 64;
                             else
                                 Oyuncu.sutun++;
                         }
@@ -130,7 +130,7 @@ public class KeyboardManager implements KeyListener{
                     if(MenuState.ButtonID == 2){
                         Oyuncu.sutun++;
                         if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
-                            Karakter.x += 64;
+                            Oyuncu.x += 64;
                         else
                             Oyuncu.sutun--;
                     }
@@ -138,13 +138,13 @@ public class KeyboardManager implements KeyListener{
                         if(GameState.matrix[siraTemp][sutunTemp] == 1){
                             Oyuncu.sutun++;
                             if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
-                                Karakter.x += 64;
+                                Oyuncu.x += 64;
                             else
                                 Oyuncu.sutun--;
 
                             Oyuncu.sutun++;
                             if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
-                                Karakter.x += 64;
+                                Oyuncu.x += 64;
                             else
                                 Oyuncu.sutun--;
                         }

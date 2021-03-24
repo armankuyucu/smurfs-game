@@ -11,14 +11,11 @@ public abstract class Karakter {
     protected int ID;
     protected String Ad;
     protected String Tur;
-    public static float x,y;
     protected int width, height;
     protected float speed;
     protected float xMove, yMove;
 
-    public Karakter(float x, float y, int width, int height, int ID, String Ad, String Tur){
-        Karakter.x = x;
-        Karakter.y = y;
+    public Karakter(int width, int height, int ID, String Ad, String Tur){
         this.ID = ID;
         this.Ad = Ad;
         this.Tur = Tur;

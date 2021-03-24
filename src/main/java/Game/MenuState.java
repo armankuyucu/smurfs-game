@@ -41,7 +41,7 @@ public class MenuState extends State {
         g.drawString("Gozluklu Sirin",150,200);
         g.drawString("Tembel Sirin",500,200);
         g.drawImage(Assets.GozlukluSirin,150,250,150,260,null);
-        g.drawImage(Assets.TembelSirin,400,250,250,250,null);
+        g.drawImage(Assets.TembelSirin,500,250,150,250,null);
 
     }
 }

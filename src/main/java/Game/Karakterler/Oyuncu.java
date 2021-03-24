@@ -8,12 +8,15 @@ public class Oyuncu extends Karakter{
 
     private Game game;
     public static int sira,sutun;
+    public static float x,y;
 
     public Oyuncu(Game game, float x, float y, int sira,int sutun,int ID, String Ad, String Tur) {
-        super(x, y,Karakter.DEFAULT_CHARACTER_WIDTH,Karakter.DEFAULT_CHARACTER_HEIGHT,ID,Ad,Tur);
+        super(Karakter.DEFAULT_CHARACTER_WIDTH,Karakter.DEFAULT_CHARACTER_HEIGHT,ID,Ad,Tur);
         this.game = game;
-        this.sira = sira;
-        this.sutun = sutun;
+        Oyuncu.x = x;
+        Oyuncu.y = y;
+        Oyuncu.sira = sira;
+        Oyuncu.sutun = sutun;
     }
 
     public void move(){

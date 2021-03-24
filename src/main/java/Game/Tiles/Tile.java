@@ -9,8 +9,12 @@ public class Tile {
     public static Tile[] tiles = new Tile[144];
     public static Tile grayTile = new GrayTile(0);
     public static Tile whiteTile = new WhiteTile(1);
-    public static Tile pinkTile = new PinkTile(2);
-    public static Tile blueTile = new BlueTile(3);
+    public static Tile blueTile = new BlueTile(2);
+    public static Tile pinkTileA = new PinkTileA(3);
+    public static Tile pinkTileB = new PinkTileB(4);
+    public static Tile pinkTileC = new PinkTileC(5);
+    public static Tile pinkTileD = new PinkTileD(6);
+
 
     protected BufferedImage texture;
     protected final int id;
