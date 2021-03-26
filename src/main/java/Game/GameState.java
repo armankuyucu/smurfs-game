@@ -13,7 +13,7 @@ public class GameState extends State{
     private Dusman gargamel;
     private Dusman azman;
 
-    public static int[][] matrix;
+    public static int[][] map;
     public static String line1, line2;
     public static String[] column1,column2,dusman1,dusman2,kapi1,kapi2;
 
@@ -63,7 +63,7 @@ public class GameState extends State{
         //Haritayi Cizme
         for(int y=0;y<11;y++){
             for(int x=0;x<13;x++){
-                if(matrix[y][x] == 1){
+                if(map[y][x] == 1){
                     //C Kapisi
                     if(y==5 && x==0){
                         Tile.tiles[5].render(g,0,5*Tile.TILEWIDTH);
@@ -90,7 +90,7 @@ public class GameState extends State{
                         Tile.tiles[1].render(g,x*Tile.TILEWIDTH,y*Tile.TILEWIDTH);
                     }
                 }
-                else if(matrix[y][x] == 0){
+                else if(map[y][x] == 0){
                     Tile.tiles[0].render(g,x*Tile.TILEWIDTH,y*Tile.TILEWIDTH);
                 }
                 g.setColor(Color.BLACK);
@@ -107,7 +107,7 @@ public class GameState extends State{
     }
     //Txt dosyasini okuma
     public void readFileIntoArray() {
-        matrix = new int[11][13];
+        map = new int[11][13];
         /*Hatirlamak icin notlar
         dusman1[1] ilk dusman
         dusman2[1] ikinci dusman
@@ -135,7 +135,7 @@ public class GameState extends State{
             System.out.println("2.Dusmanin kapisi: " + kapi2[1]);
             for(int i=0;i<11;i++){
                 for(int j=0;j<13;j++){
-                    matrix[i][j] = sc.nextInt();
+                    map[i][j] = sc.nextInt();
                 }
             }
         } catch (FileNotFoundException e) {

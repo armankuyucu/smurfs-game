@@ -1,8 +1,6 @@
 package Game;
-import Game.Karakterler.Karakter;
 import Game.Karakterler.Oyuncu;
 
-import java.awt.*;
 import java.awt.event.*;
 
 public class KeyboardManager implements KeyListener{
@@ -26,7 +24,7 @@ public class KeyboardManager implements KeyListener{
                 if(MenuState.ButtonID == 2){
                     Oyuncu.sira--;
 
-                    if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
+                    if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                         Oyuncu.y -= 64;
                     else
                         Oyuncu.sira++;
@@ -37,14 +35,14 @@ public class KeyboardManager implements KeyListener{
                     if(siraTemp == -1)
                         siraTemp = 0;
 
-                    if(GameState.matrix[siraTemp][sutunTemp] == 1 && (siraTemp > 0 && sutunTemp < 11)){
+                    if(GameState.map[siraTemp][sutunTemp] == 1 && (siraTemp > 0 && sutunTemp < 11)){
                         Oyuncu.sira--;
-                        if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
+                        if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                             Oyuncu.y -= 64;
                         else
                             Oyuncu.sira++;
                         Oyuncu.sira--;
-                        if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
+                        if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                             Oyuncu.y -= 64;
                         else
                             Oyuncu.sira++;
@@ -62,21 +60,21 @@ public class KeyboardManager implements KeyListener{
                 if(MenuState.ButtonID == 2){
                     Oyuncu.sira++;
 
-                    if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
+                    if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                         Oyuncu.y += 64;
                     else
                         Oyuncu.sira--;
                 }
 
                 else if(MenuState.ButtonID == 1){
-                    if(GameState.matrix[siraTemp][sutunTemp] == 1){
+                    if(GameState.map[siraTemp][sutunTemp] == 1){
                         Oyuncu.sira++;
-                        if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
+                        if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                             Oyuncu.y += 64;
                         else
                             Oyuncu.sira--;
                         Oyuncu.sira++;
-                        if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
+                        if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                             Oyuncu.y += 64;
                         else
                             Oyuncu.sira--;
@@ -96,22 +94,22 @@ public class KeyboardManager implements KeyListener{
                     if(MenuState.ButtonID == 2){
                         Oyuncu.sutun--;
 
-                        if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
+                        if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                             Oyuncu.x -= 64;
                         else
                             Oyuncu.sutun++;
                     }
 
                     else if(MenuState.ButtonID == 1){
-                        if(GameState.matrix[siraTemp][sutunTemp] == 1){
+                        if(GameState.map[siraTemp][sutunTemp] == 1){
                             Oyuncu.sutun--;
-                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
+                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                                 Oyuncu.x -= 64;
                             else
                                 Oyuncu.sutun++;
 
                             Oyuncu.sutun--;
-                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
+                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                                 Oyuncu.x -= 64;
                             else
                                 Oyuncu.sutun++;
@@ -129,21 +127,21 @@ public class KeyboardManager implements KeyListener{
 
                     if(MenuState.ButtonID == 2){
                         Oyuncu.sutun++;
-                        if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
+                        if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                             Oyuncu.x += 64;
                         else
                             Oyuncu.sutun--;
                     }
                     else if(MenuState.ButtonID == 1){
-                        if(GameState.matrix[siraTemp][sutunTemp] == 1){
+                        if(GameState.map[siraTemp][sutunTemp] == 1){
                             Oyuncu.sutun++;
-                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
+                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                                 Oyuncu.x += 64;
                             else
                                 Oyuncu.sutun--;
 
                             Oyuncu.sutun++;
-                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.matrix[Oyuncu.sira][Oyuncu.sutun] == 1)
+                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                                 Oyuncu.x += 64;
                             else
                                 Oyuncu.sutun--;
