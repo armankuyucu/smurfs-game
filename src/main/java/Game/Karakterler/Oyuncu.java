@@ -4,6 +4,8 @@ import Game.Game;
 
 import java.awt.*;
 
+import static Game.GameState.AltinListesi;
+
 public class Oyuncu extends Karakter{
 
     private Game game;
@@ -26,6 +28,7 @@ public class Oyuncu extends Karakter{
 
     @Override
     public void update() {
+        System.out.println("girdi");
 
     }
 

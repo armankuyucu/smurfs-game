@@ -5,6 +5,8 @@ import Game.Game;
 
 import java.awt.*;
 
+import static Game.GameState.AltinListesi;
+
 public class GozlukluSirin extends Oyuncu{
 
     public GozlukluSirin(Game game, float x, float y, int sira, int sutun, int ID, String Ad, String Tur) {
@@ -13,6 +15,13 @@ public class GozlukluSirin extends Oyuncu{
 
     public void update() {
         move();
+        //Altin Collision Control
+        for(int i=0;i<5;i++){
+            if((AltinListesi[i].sutun == Oyuncu.sira) && (AltinListesi[i].satir == Oyuncu.sutun) )
+            {
+                AltinListesi[i].satir = 20;
+            }
+        }
     }
 
     public void render(Graphics g){

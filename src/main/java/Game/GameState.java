@@ -1,6 +1,8 @@
 package Game;
 
 import Game.Karakterler.*;
+import Game.Objeler.Altin;
+import Game.Objeler.Mantar;
 import Game.Tiles.Tile;
 
 import java.awt.*;
@@ -12,6 +14,9 @@ public class GameState extends State{
     private Oyuncu oyuncu;
     private Dusman gargamel;
     private Dusman azman;
+    private Altin altin;
+    public static Altin[] AltinListesi = new Altin[5];
+    private Mantar mantar;
 
     public static int[][] map;
     public static String line1, line2;
@@ -47,6 +52,23 @@ public class GameState extends State{
             else if(GameState.kapi2[1].equals("D"))
                 azman = new Azman(game,3*Tile.TILEWIDTH+10,10*Tile.TILEWIDTH,1,10,0,"Azman","Dusman");
         }
+
+        //Altin Sinifi islemleri
+        int lower = 1;
+
+        //Satirlar
+        int higher = 11;
+
+        AltinListesi[0] = new Altin(5,5,
+                (int)(Math.random() * (higher-lower)) + lower, (int)(Math.random() * (higher-lower)) + lower);
+        AltinListesi[1] = new Altin(5,5,
+                (int)(Math.random() * (higher-lower)) + lower,(int)(Math.random() * (higher-lower)) + lower);
+        AltinListesi[2] = new Altin(5,5,
+                (int)(Math.random() * (higher-lower)) + lower,(int)(Math.random() * (higher-lower)) + lower);
+        AltinListesi[3] = new Altin(5,5,
+                (int)(Math.random() * (higher-lower)) + lower,(int)(Math.random() * (higher-lower)) + lower);
+        AltinListesi[4] = new Altin(5,5,
+                (int)(Math.random() * (higher-lower)) + lower,(int)(Math.random() * (higher-lower)) + lower);
     }
 
     @Override
@@ -103,6 +125,12 @@ public class GameState extends State{
             gargamel.render(g);
         if(GameState.dusman2[1].equals("Azman"))
             azman.render(g);
+
+        //Altinlar
+        for(int i=0;i<5;i++)
+            AltinListesi[i].render(g);
+
+        //Skor
 
     }
     //Txt dosyasini okuma

@@ -1,11 +1,15 @@
 package Game;
 
+import Game.Karakterler.Oyuncu;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.io.*;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static Game.GameState.AltinListesi;
 
 /**
  *
@@ -54,6 +58,7 @@ public class Game implements Runnable {
         if(State.getState() != null){
             State.getState().update();
         }
+
     }
 
     private void render() {

@@ -18,6 +18,9 @@ public class Assets {
     public static BufferedImage PinkTileC;
     public static BufferedImage PinkTileD;
 
+    //Objects
+    public static BufferedImage Altin;
+
     public static BufferedImage WhiteTile;
     public static void init(){
         Sirine = ImageLoader.loadImage("/Sirine.png");
@@ -32,7 +35,8 @@ public class Assets {
         PinkTileB = ImageLoader.loadImage("/PinkTileB.png");
         PinkTileC = ImageLoader.loadImage("/PinkTileC.png");
         PinkTileD = ImageLoader.loadImage("/PinkTileD.png");
-
         WhiteTile = ImageLoader.loadImage("/WhiteTile.png");
+
+        Altin = ImageLoader.loadImage("/Altin.png");
     }
 }
