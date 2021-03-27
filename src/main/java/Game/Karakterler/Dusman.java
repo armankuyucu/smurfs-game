@@ -1,7 +1,6 @@
 package Game.Karakterler;
 
 import Game.Game;
-import Game.GameState;
 
 public abstract class Dusman extends Karakter{
     protected int ID;

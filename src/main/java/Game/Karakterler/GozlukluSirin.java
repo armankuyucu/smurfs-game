@@ -2,10 +2,10 @@ package Game.Karakterler;
 
 import Game.Assets;
 import Game.Game;
+import Game.Objeler.Altin;
+import Game.Objeler.Mantar;
 
 import java.awt.*;
-
-import static Game.GameState.AltinListesi;
 
 public class GozlukluSirin extends Oyuncu{
 
@@ -15,13 +15,8 @@ public class GozlukluSirin extends Oyuncu{
 
     public void update() {
         move();
-        //Altin Collision Control
-        for(int i=0;i<5;i++){
-            if((AltinListesi[i].sutun == Oyuncu.sira) && (AltinListesi[i].satir == Oyuncu.sutun) )
-            {
-                AltinListesi[i].satir = 20;
-            }
-        }
+        Altin.AltinCollisionDetection();
+        Mantar.MantarCollisionDetection();
     }
 
     public void render(Graphics g){

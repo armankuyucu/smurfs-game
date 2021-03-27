@@ -20,15 +20,18 @@ public class Assets {
 
     //Objects
     public static BufferedImage Altin;
+    public static BufferedImage Mantar;
 
     public static BufferedImage WhiteTile;
     public static void init(){
+        //Karakterler
         Sirine = ImageLoader.loadImage("/Sirine.png");
         GozlukluSirin = ImageLoader.loadImage("/GozlukluSirin.png");
         TembelSirin = ImageLoader.loadImage("/TembelSirin.png");
         Gargamel = ImageLoader.loadImage("/Gargamel.png");
         Azman = ImageLoader.loadImage("/Azman.png");
 
+        //Tiles
         GrayTile = ImageLoader.loadImage("/GrayTile.png");
         BlueTile = ImageLoader.loadImage("/BlueTile.png");
         PinkTileA = ImageLoader.loadImage("/PinkTileA.png");
@@ -37,6 +40,8 @@ public class Assets {
         PinkTileD = ImageLoader.loadImage("/PinkTileD.png");
         WhiteTile = ImageLoader.loadImage("/WhiteTile.png");
 
+        //Objeler
         Altin = ImageLoader.loadImage("/Altin.png");
+        Mantar = ImageLoader.loadImage("/Mantar.png");
     }
 }

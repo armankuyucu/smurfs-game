@@ -1,17 +1,19 @@
 package Game.Objeler;
 
 import java.awt.*;
+import java.util.Timer;
 
 public abstract class Obje {
-    protected int deger;
     protected int olusmaSuresi;
-    protected int width =64, height =64;
+    protected int width =60, height =60;
+    public Timer timer = new Timer();
     public int satir,sutun;
-    public Obje(int deger,int olusmaSuresi,int satir,int sutun){
-        this.deger = deger;
+    public boolean used;
+    public Obje(int olusmaSuresi,int satir,int sutun,boolean used){
         this.olusmaSuresi = olusmaSuresi;
         this.satir = satir;
         this.sutun =sutun;
+        this.used = used;
     }
 
     public abstract void update();

@@ -1,9 +1,8 @@
-package Game;
+package Game.States;
 
-import javax.swing.*;
+import Game.Game;
+import Game.Assets;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MenuState extends State {
     public static int ButtonID;
@@ -35,8 +34,11 @@ public class MenuState extends State {
     @Override
     public void render(Graphics g) {
         g.create(0,0,832,704);
-        g.setFont(new Font("TimesRoman", Font.ITALIC, 60));
-        g.drawString("Karakterinizi Seciniz",150,75);
+        g.setColor(Color.ORANGE);
+        g.setFont(new Font("TimesRoman", Font.ITALIC, 75));
+        g.drawString("Karakterinizi Seciniz",100,100);
+
+        g.setColor(Color.BLUE);
         g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
         g.drawString("Gozluklu Sirin",150,200);
         g.drawString("Tembel Sirin",500,200);

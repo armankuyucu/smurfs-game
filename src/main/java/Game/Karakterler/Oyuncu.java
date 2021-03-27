@@ -4,9 +4,7 @@ import Game.Game;
 
 import java.awt.*;
 
-import static Game.GameState.AltinListesi;
-
-public class Oyuncu extends Karakter{
+public abstract class Oyuncu extends Karakter{
 
     private Game game;
     public static int sira,sutun;

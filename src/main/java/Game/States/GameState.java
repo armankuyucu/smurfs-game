@@ -1,5 +1,6 @@
-package Game;
+package Game.States;
 
+import Game.Game;
 import Game.Karakterler.*;
 import Game.Objeler.Altin;
 import Game.Objeler.Mantar;
@@ -16,7 +17,7 @@ public class GameState extends State{
     private Dusman azman;
     private Altin altin;
     public static Altin[] AltinListesi = new Altin[5];
-    private Mantar mantar;
+    public static Mantar mantar;
 
     public static int[][] map;
     public static String line1, line2;
@@ -53,22 +54,16 @@ public class GameState extends State{
                 azman = new Azman(game,3*Tile.TILEWIDTH+10,10*Tile.TILEWIDTH,1,10,0,"Azman","Dusman");
         }
 
-        //Altin Sinifi islemleri
-        int lower = 1;
+        mantar = new Mantar(14,-100,-100,false);
+        Mantar.RastgeleMantarOlusturma();
+        ilkKezAltinOlusturma();
+    }
 
-        //Satirlar
-        int higher = 11;
-
-        AltinListesi[0] = new Altin(5,5,
-                (int)(Math.random() * (higher-lower)) + lower, (int)(Math.random() * (higher-lower)) + lower);
-        AltinListesi[1] = new Altin(5,5,
-                (int)(Math.random() * (higher-lower)) + lower,(int)(Math.random() * (higher-lower)) + lower);
-        AltinListesi[2] = new Altin(5,5,
-                (int)(Math.random() * (higher-lower)) + lower,(int)(Math.random() * (higher-lower)) + lower);
-        AltinListesi[3] = new Altin(5,5,
-                (int)(Math.random() * (higher-lower)) + lower,(int)(Math.random() * (higher-lower)) + lower);
-        AltinListesi[4] = new Altin(5,5,
-                (int)(Math.random() * (higher-lower)) + lower,(int)(Math.random() * (higher-lower)) + lower);
+    public void ilkKezAltinOlusturma(){
+        for(int i=0;i<5;i++){
+            AltinListesi[i] = new Altin(10,-100,-100,false);
+        }
+        Altin.RastgeleAltinOlusturma();
     }
 
     @Override
@@ -130,9 +125,15 @@ public class GameState extends State{
         for(int i=0;i<5;i++)
             AltinListesi[i].render(g);
 
-        //Skor
+        //Mantar
+        mantar.render(g);
 
+        //Skor
+        g.setColor(Color.RED);
+        g.setFont(new Font(Font.SANS_SERIF,Font.BOLD,35));
+        g.drawString(String.format("Skor : %d",Puan.Skor),650,680);
     }
+
     //Txt dosyasini okuma
     public void readFileIntoArray() {
         map = new int[11][13];

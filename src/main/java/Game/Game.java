@@ -1,15 +1,14 @@
 package Game;
 
 import Game.Karakterler.Oyuncu;
+import Game.States.GameState;
+import Game.States.MenuState;
+import Game.States.State;
+import Game.States.WinState;
 
-import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.io.*;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import static Game.GameState.AltinListesi;
 
 /**
  *
@@ -29,6 +28,7 @@ public class Game implements Runnable {
     //States
     public State gameState;
     public State menuState;
+    public State winState;
 
     public MouseManager getMouseManager() {
         return mouseManager;
@@ -57,6 +57,10 @@ public class Game implements Runnable {
 
         if(State.getState() != null){
             State.getState().update();
+        }
+        if(Oyuncu.sutun == 12 && Oyuncu.sira == 7){
+            winState = new WinState(this);
+            State.setState(winState);
         }
 
     }

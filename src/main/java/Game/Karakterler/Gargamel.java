@@ -1,7 +1,6 @@
 package Game.Karakterler;
 
 import Game.Game;
-import Game.GameState;
 import Game.Assets;
 
 import java.awt.*;

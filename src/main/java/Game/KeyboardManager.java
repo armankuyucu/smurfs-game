@@ -1,5 +1,9 @@
 package Game;
 import Game.Karakterler.Oyuncu;
+import Game.Objeler.Altin;
+import Game.Objeler.Mantar;
+import Game.States.GameState;
+import Game.States.MenuState;
 
 import java.awt.event.*;
 
@@ -41,6 +45,10 @@ public class KeyboardManager implements KeyListener{
                             Oyuncu.y -= 64;
                         else
                             Oyuncu.sira++;
+
+                        Altin.AltinCollisionDetection();
+                        Mantar.MantarCollisionDetection();
+
                         Oyuncu.sira--;
                         if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                             Oyuncu.y -= 64;
@@ -73,6 +81,10 @@ public class KeyboardManager implements KeyListener{
                             Oyuncu.y += 64;
                         else
                             Oyuncu.sira--;
+
+                        Altin.AltinCollisionDetection();
+                        Mantar.MantarCollisionDetection();
+
                         Oyuncu.sira++;
                         if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                             Oyuncu.y += 64;
@@ -108,6 +120,9 @@ public class KeyboardManager implements KeyListener{
                             else
                                 Oyuncu.sutun++;
 
+                            Altin.AltinCollisionDetection();
+                            Mantar.MantarCollisionDetection();
+
                             Oyuncu.sutun--;
                             if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
                                 Oyuncu.x -= 64;
@@ -139,6 +154,9 @@ public class KeyboardManager implements KeyListener{
                                 Oyuncu.x += 64;
                             else
                                 Oyuncu.sutun--;
+
+                            Altin.AltinCollisionDetection();
+                            Mantar.MantarCollisionDetection();
 
                             Oyuncu.sutun++;
                             if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
