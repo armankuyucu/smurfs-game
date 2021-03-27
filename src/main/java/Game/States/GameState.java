@@ -15,13 +15,13 @@ public class GameState extends State{
     private Oyuncu oyuncu;
     private Dusman gargamel;
     private Dusman azman;
-    private Altin altin;
     public static Altin[] AltinListesi = new Altin[5];
     public static Mantar mantar;
 
     public static int[][] map;
     public static String line1, line2;
     public static String[] column1,column2,dusman1,dusman2,kapi1,kapi2;
+    public static int[][] AdjacencyMatrix;
 
     public GameState(Game game){
         super(game);
@@ -134,15 +134,19 @@ public class GameState extends State{
         g.drawString(String.format("Skor : %d",Puan.Skor),650,680);
     }
 
+
     //Txt dosyasini okuma
     public void readFileIntoArray() {
         map = new int[11][13];
+        //Read harita.txt
+
         /*Hatirlamak icin notlar
         dusman1[1] ilk dusman
         dusman2[1] ikinci dusman
         kapi1[1] ilk dusmanin kapisi
         kapi2[1] ikinci dusmanin kapisi
         */
+
         try {
             Scanner sc = new Scanner(new File("res/harita.txt"));
             line1 = sc.nextLine();
@@ -157,11 +161,13 @@ public class GameState extends State{
             kapi1 = column1[1].split("\\s*:\\s*",0);
             dusman2 = column2[0].split("\\s*:\\s*",0);
             kapi2 = column2[1].split("\\s*:\\s*",0);
-
+/*
             System.out.println("1.Dusman: " + dusman1[1]);
             System.out.println("1.Dusmanin kapisi: " + kapi1[1]);
             System.out.println("2.Dusman: " + dusman2[1]);
             System.out.println("2.Dusmanin kapisi: " + kapi2[1]);
+            */
+
             for(int i=0;i<11;i++){
                 for(int j=0;j<13;j++){
                     map[i][j] = sc.nextInt();
@@ -171,6 +177,91 @@ public class GameState extends State{
             e.printStackTrace();
         }
 
+        //Read AdjacencyMatrix.txt
+
+        AdjacencyMatrix = new int[143][143];
+        try{
+            Scanner scanner = new Scanner(new File("res/KomsulukMatrisi.txt"));
+            for(int i=0;i<143;i++){
+                for(int j=0;j<143;j++){
+                    AdjacencyMatrix[i][j] = scanner.nextInt();
+                }
+            }
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+
+
+        //Graph_Shortest_Path g = new Graph_Shortest_Path();
+        this.algo_dijkstra(GameState.AdjacencyMatrix, 10);
+
     }
+
+    //Dijkstra's Shortest Path Algorithm
+
+    //Asagidaki kod https://www.softwaretestinghelp.com/dijkstras-algorithm-in-java/#Using_Adjacency_Matrix
+    //sitesinden alinmistir.
+
+    static final int num_Vertices = 143;  //max number of vertices in graph
+    // find a vertex with minimum distance
+    int minDistance(int path_array[], Boolean sptSet[])   {
+        // Initialize min value
+        int min = Integer.MAX_VALUE, min_index = -1;
+        for (int v = 0; v < num_Vertices; v++)
+            if (sptSet[v] == false && path_array[v] <= min) {
+                min = path_array[v];
+                min_index = v;
+            }
+
+        return min_index;
+    }
+
+    // print the array of distances (path_array)
+    void printMinpath(int path_array[])   {
+        System.out.println("Vertex# \t Minimum Distance from Source");
+        for (int i = 0; i < num_Vertices; i++)
+            System.out.println(i + " \t\t\t " + path_array[i]);
+    }
+
+    // Implementation of Dijkstra's algorithm for graph (adjacency matrix)
+    void algo_dijkstra(int graph[][], int src_node)  {
+        int path_array[] = new int[num_Vertices]; // The output array. dist[i] will hold
+        // the shortest distance from src to i
+
+        // spt (shortest path set) contains vertices that have shortest path
+        Boolean sptSet[] = new Boolean[num_Vertices];
+
+        // Initially all the distances are INFINITE and stpSet[] is set to false
+        for (int i = 0; i < num_Vertices; i++) {
+            path_array[i] = Integer.MAX_VALUE;
+            sptSet[i] = false;
+        }
+
+        // Path between vertex and itself is always 0
+        path_array[src_node] = 0;
+        // now find shortest path for all vertices
+        for (int count = 0; count < num_Vertices - 1; count++) {
+            // call minDistance method to find the vertex with min distance
+            int u = minDistance(path_array, sptSet);
+            // the current vertex u is processed
+            sptSet[u] = true;
+            // process adjacent nodes of the current vertex
+            for (int v = 0; v < num_Vertices; v++)
+
+                // if vertex v not in sptset then update it
+                if (!sptSet[v] && graph[u][v] != 0 && path_array[u] !=
+                        Integer.MAX_VALUE && path_array[u]
+                        + graph[u][v] < path_array[v])
+                    path_array[v] = path_array[u] + graph[u][v];
+
+            System.out.println(count + ".path array: " + path_array[count]);
+        }
+
+        // print the path array
+        printMinpath(path_array);
+    }
+
+
+
 
 }

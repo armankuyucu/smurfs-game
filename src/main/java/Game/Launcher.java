@@ -1,5 +1,7 @@
 package Game;
 
+import Game.States.GameState;
+
 /**
  *
  * @author arman
