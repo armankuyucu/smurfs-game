@@ -28,7 +28,4 @@ public abstract class Dusman extends Karakter{
 
     }
 
-    public void createAdjacencyMatrix(){
-
-    }
 }
