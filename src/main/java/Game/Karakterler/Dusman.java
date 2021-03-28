@@ -84,26 +84,27 @@ public abstract class Dusman extends Karakter{
     }
 
     int sayac = 0;
-    int [] birSonraki = new int[1];
+    public static int [] birSonraki = new int[1];
     // Function to print shortest
     // path from source to j
     // using parent array
-    public void printPath(int parent[], int j)
+    public void printPath(int parent[], int j,int src)
     {
 
         // Base Case : If j is source
         if (parent[j] ==  -1) {
             return;
         }
-        printPath(parent, parent[j]);
-
+        printPath(parent, parent[j],src);
         path.add(j);
-        if(sayac == 1){
+
+        if(sayac == path.size()-1){
             birSonraki[0] = j;
             sayac = 0;
         }
 
         sayac++;
+
     }
 
     // A utility function to print
@@ -111,14 +112,14 @@ public abstract class Dusman extends Karakter{
     // array
     public void printSolution(int dist[], int n, int parent[],int src,int destination)
     {
-        int nVertices = dist.length;
+
         //System.out.println("Vertex\t Distance\tPath");
         path = new ArrayList<>();
-        for (int i = 1; i < nVertices; i++)
+        for (int i = 0; i < V; i++)
         {
             if(i != src && i == destination){
-                //System.out.println(String.format("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i], src));
-                printPath(parent, i);
+                System.out.println(String.format("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i], src));
+                printPath(parent, i,src);
             }
         }
     }
