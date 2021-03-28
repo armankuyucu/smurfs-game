@@ -84,7 +84,7 @@ public abstract class Dusman extends Karakter{
     }
 
     int sayac = 0;
-    public static int [] birSonraki = new int[1];
+    public static int birSonraki;
     // Function to print shortest
     // path from source to j
     // using parent array
@@ -92,16 +92,16 @@ public abstract class Dusman extends Karakter{
     {
 
         // Base Case : If j is source
-        if (parent[j] ==  -1) {
+        if (parent[j] < src) {
             return;
         }
         printPath(parent, parent[j],src);
         path.add(j);
 
-        if(sayac == path.size()-1){
-            birSonraki[0] = j;
+        /*if(sayac == path.size()-1){
+            birSonraki = j;
             sayac = 0;
-        }
+        }*/
 
         sayac++;
 
@@ -110,14 +110,13 @@ public abstract class Dusman extends Karakter{
     // A utility function to print
     // the constructed distance
     // array
-    public void printSolution(int dist[], int n, int parent[],int src,int destination)
+    void printSolution(int dist[], int n, int parent[],int destination)
     {
-
-        //System.out.println("Vertex\t Distance\tPath");
-        path = new ArrayList<>();
-        for (int i = 0; i < V; i++)
+        int src = n; //Here im using n as the src, instead of 0
+        System.out.println("Vertex\t Distance\tPath");
+        for (int i = 0; i < V; i++) // Here I changed 1 for 0 so it would show the path to 0 in case src is not 0
         {
-            if(i != src && i == destination){
+            if(i == destination){
                 System.out.println(String.format("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i], src));
                 printPath(parent, i,src);
             }
@@ -194,7 +193,7 @@ public abstract class Dusman extends Karakter{
 
         // print the constructed
         // distance array
-        printSolution(dist, V, parent,src, destination);
+        printSolution(dist, src, parent,destination);
     }
 
 

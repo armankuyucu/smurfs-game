@@ -2,6 +2,7 @@ package Game.Karakterler;
 
 import Game.Game;
 import Game.Assets;
+import Game.States.GameState;
 import Game.Tiles.Tile;
 
 import java.awt.*;
@@ -28,33 +29,36 @@ public class Azman extends Dusman{
 
     @Override
     public void EnKisaYol() {
-        if(azmanSayac != 0){
-            if(path.get(1) - path.get(0) == 1){
+
+        dijkstra(AdjacencyMatrix,azmanSira*13+azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
+            for(int i =0;i<path.size();i++){
+                System.out.print(path.get(i) + " ");
+            }
+
+            if(path.get(1) - path.get(0) == 1 && (GameState.map[azmanSira][azmanSutun+1] == 1)){
                 azmanSutun++;
                 System.out.println("sutun++");
             }
-            else if(path.get(1) - path.get(0) == -1){
+            else if(path.get(1) - path.get(0) == -1 && (GameState.map[azmanSira][azmanSutun-1] == 1)){
                 azmanSutun--;
                 System.out.println("sutun--");
             }
-            else if(path.get(1) - path.get(0) == 13){
+            else if(path.get(1) - path.get(0) == 13 && (GameState.map[azmanSira+1][azmanSutun] == 1)){
                 azmanSira++;
                 System.out.println("sira++");
             }
-            else if(path.get(1) - path.get(0) == -13){
+            else if(path.get(1) - path.get(0) == -13 && (GameState.map[azmanSira-1][azmanSutun] == 1)){
                 azmanSira--;
                 System.out.println("sira--");
             }
-        }
+            else{
+                System.out.println("Hicbiri " + (path.get(1)-path.get(0)) + " ");
+            }
 
-        dijkstra(AdjacencyMatrix,azmanSira*13+azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
-        for(int i : path){
-            System.out.print(i + " ");
-        }
 
         azmanSayac = 1;
 
-        path.remove(0);
+        //path.remove(0);
 
     }
 
@@ -68,6 +72,6 @@ public class Azman extends Dusman{
 
     @Override
     public void render(Graphics g) {
-
+        g.drawImage(Assets.Azman,azmanSutun*Tile.TILEWIDTH,azmanSira*Tile.TILEWIDTH,width,height,null);
     }
 }
