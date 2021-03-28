@@ -45,13 +45,13 @@ public class GameState extends State{
         }
         if(GameState.dusman2[1].equals("Azman")){
             if(GameState.kapi2[1].equals("A"))
-                azman = new Azman(game,3*Tile.TILEWIDTH+10,0,0,3,0,"Azman","Dusman");
+                azman = new Azman(game,3*Tile.TILEWIDTH,0,0,3,0,"Azman","Dusman");
             else if(GameState.kapi2[1].equals("B"))
-                azman = new Azman(game,10*Tile.TILEWIDTH+10,0,0,10,0,"Azman","Dusman");
+                azman = new Azman(game,10*Tile.TILEWIDTH,0,0,10,0,"Azman","Dusman");
             else if(GameState.kapi2[1].equals("C"))
-                azman = new Azman(game,10,5*Tile.TILEWIDTH,5,0,0,"Azman","Dusman");
+                azman = new Azman(game,0,5*Tile.TILEWIDTH,5,0,0,"Azman","Dusman");
             else if(GameState.kapi2[1].equals("D"))
-                azman = new Azman(game,3*Tile.TILEWIDTH+10,10*Tile.TILEWIDTH,11,3,0,"Azman","Dusman");
+                azman = new Azman(game,3*Tile.TILEWIDTH,10*Tile.TILEWIDTH,11,3,0,"Azman","Dusman");
         }
 
         mantar = new Mantar(14,-100,-100,false);

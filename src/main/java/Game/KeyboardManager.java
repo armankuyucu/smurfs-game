@@ -25,7 +25,7 @@ public class KeyboardManager implements KeyListener{
         int keyCode = keyEvent.getKeyCode();
         int siraTemp;
         int sutunTemp;
-
+        Dusman.pressed = true;
         Dusman.hareketSayaci++;
         switch (keyCode) {
 

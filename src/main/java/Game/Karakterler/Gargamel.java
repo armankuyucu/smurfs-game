@@ -7,9 +7,11 @@ import java.awt.*;
 
 public class Gargamel extends Dusman{
 
-
+    private int sira,sutun;
     public Gargamel(Game game, float x, float y, int sira, int sutun, int ID, String Ad, String Tur) {
-        super(game, x, y, sira, sutun, ID, Ad, Tur);
+        super(game, x, y, ID, Ad, Tur);
+        this.sira = sira;
+        this.sutun = sutun;
         //this.dijkstra(AdjacencyMatrix, 10,71);
     }
 

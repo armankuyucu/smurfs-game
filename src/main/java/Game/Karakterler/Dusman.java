@@ -13,27 +13,21 @@ public abstract class Dusman extends Karakter{
     protected String Tur;
     protected float x,y;
     protected Game game;
-    protected int sira,sutun;
     public static int AdjacencyMatrix[][];
     public ArrayList<Integer> path = new ArrayList<>();
+
+    public static boolean pressed = false;
 
     public static int hareketSayaci = 0;
     private static final int V = 143 ;
     public static int parent[] = new int[V];
 
-    public Dusman(Game game,float x, float y,int sira,int sutun, int ID, String Ad, String Tur) {
+    public Dusman(Game game,float x, float y, int ID, String Ad, String Tur) {
         super(Karakter.DEFAULT_CHARACTER_WIDTH,Karakter.DEFAULT_CHARACTER_HEIGHT,ID, Ad, Tur);
         this.game = game;
         this.x = x;
         this.y = y;
-        this.sira = sira;
-        this.sutun = sutun;
         readAdjacencyMatrix();
-
-        for(int i=0;i<path.size();i++){
-
-            System.out.print(path.get(i) + " ");
-        }
     }
 
     public Dusman(){
@@ -49,10 +43,6 @@ public abstract class Dusman extends Karakter{
     }
 
     public void EnKisaYol(){
-        this.dijkstra(AdjacencyMatrix,(sira*13+sutun),(Oyuncu.sutun+Oyuncu.sira*13));
-        for(int i=0;i<path.size();i++){
-            System.out.print(path.get(i) + " ");
-        }
     }
 
     public void readAdjacencyMatrix(){
@@ -93,6 +83,8 @@ public abstract class Dusman extends Karakter{
         return min_index;
     }
 
+    int sayac = 0;
+    int [] birSonraki = new int[1];
     // Function to print shortest
     // path from source to j
     // using parent array
@@ -100,12 +92,18 @@ public abstract class Dusman extends Karakter{
     {
 
         // Base Case : If j is source
-        if (parent[j] == - 1)
+        if (parent[j] ==  -1) {
             return;
-
+        }
         printPath(parent, parent[j]);
+
         path.add(j);
-        //System.out.print(" " + j);
+        if(sayac == 1){
+            birSonraki[0] = j;
+            sayac = 0;
+        }
+
+        sayac++;
     }
 
     // A utility function to print
@@ -115,6 +113,7 @@ public abstract class Dusman extends Karakter{
     {
         int nVertices = dist.length;
         //System.out.println("Vertex\t Distance\tPath");
+        path = new ArrayList<>();
         for (int i = 1; i < nVertices; i++)
         {
             if(i != src && i == destination){
@@ -144,7 +143,6 @@ public abstract class Dusman extends Karakter{
 
         // Parent array to store
         // shortest path tree
-
         // Initialize all distances as
         // INFINITE and stpSet[] as false
         for (int i = 0; i < V; i++)
@@ -158,6 +156,7 @@ public abstract class Dusman extends Karakter{
         // from itself is always 0
         dist[src] = 0;
 
+        //path.clear();
         // Find shortest path
         // for all vertices
         for (int count = 0; count < V - 1; count++)
