@@ -4,6 +4,7 @@ import Game.Game;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class Dusman extends Karakter{
@@ -11,10 +12,13 @@ public abstract class Dusman extends Karakter{
     protected String Ad;
     protected String Tur;
     protected float x,y;
-    private Game game;
-    private int sira,sutun;
+    protected Game game;
+    protected int sira,sutun;
     public static int AdjacencyMatrix[][];
+    public ArrayList<Integer> path = new ArrayList<>();
+
     private static final int V = 143 ;
+    public static int parent[] = new int[V];
 
     public Dusman(Game game,float x, float y,int sira,int sutun, int ID, String Ad, String Tur) {
         super(Karakter.DEFAULT_CHARACTER_WIDTH,Karakter.DEFAULT_CHARACTER_HEIGHT,ID, Ad, Tur);
@@ -24,8 +28,11 @@ public abstract class Dusman extends Karakter{
         this.sira = sira;
         this.sutun = sutun;
         readAdjacencyMatrix();
-        this.dijkstra(AdjacencyMatrix, 10);
 
+        for(int i=0;i<path.size();i++){
+
+            System.out.print(path.get(i) + " ");
+        }
     }
 
     public void update(){
@@ -33,6 +40,10 @@ public abstract class Dusman extends Karakter{
     }
 
     public void render(){
+
+    }
+
+    public void EnKisaYol(){
 
     }
 
@@ -59,8 +70,7 @@ public abstract class Dusman extends Karakter{
     //Asagidaki kod https://www.geeksforgeeks.org/printing-paths-dijkstras-shortest-path-algorithm/
     //adresinden alinmistir.
 
-    int minDistance(int dist[],
-                    boolean sptSet[])
+    public int minDistance(int dist[], boolean sptSet[])
     {
 
         // Initialize min value
@@ -78,7 +88,7 @@ public abstract class Dusman extends Karakter{
     // Function to print shortest
     // path from source to j
     // using parent array
-    void printPath(int parent[], int j)
+    public void printPath(int parent[], int j)
     {
 
         // Base Case : If j is source
@@ -86,22 +96,23 @@ public abstract class Dusman extends Karakter{
             return;
 
         printPath(parent, parent[j]);
-
-        System.out.print(" " + j);
+        path.add(j);
+        //System.out.print(" " + j);
     }
 
     // A utility function to print
-// the constructed distance
-// array
-    void printSolution(int dist[], int n,
-                       int parent[])
+    // the constructed distance
+    // array
+    public void printSolution(int dist[], int n, int parent[],int src,int destination)
     {
-        int src = 0;
-        System.out.println("Vertex\t Distance\tPath");
-        for (int i = 1; i < V; i++)
+        int nVertices = dist.length;
+        //System.out.println("Vertex\t Distance\tPath");
+        for (int i = 1; i < nVertices; i++)
         {
-            System.out.println(String.format("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i], src));
-            printPath(parent, i);
+            if(i != src && i == destination){
+                //System.out.println(String.format("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i], src));
+                printPath(parent, i);
+            }
         }
     }
 
@@ -109,7 +120,7 @@ public abstract class Dusman extends Karakter{
 // single source shortest path
 // algorithm for a graph represented
 // using adjacency matrix representation
-    void dijkstra(int [][]graph, int src)
+    public void dijkstra(int [][]graph, int src,int destination)
     {
 
         // The output array. dist[i]
@@ -125,7 +136,6 @@ public abstract class Dusman extends Karakter{
 
         // Parent array to store
         // shortest path tree
-        int parent[] = new int[V];
 
         // Initialize all distances as
         // INFINITE and stpSet[] as false
@@ -176,7 +186,7 @@ public abstract class Dusman extends Karakter{
 
         // print the constructed
         // distance array
-        printSolution(dist, V, parent);
+        printSolution(dist, V, parent,src, destination);
     }
 
 

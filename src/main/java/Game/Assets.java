@@ -13,6 +13,7 @@ public class Assets {
     //Tiles
     public static BufferedImage GrayTile;
     public static BufferedImage BlueTile;
+    public static BufferedImage GreenTile;
     public static BufferedImage PinkTileA;
     public static BufferedImage PinkTileB;
     public static BufferedImage PinkTileC;
@@ -34,6 +35,7 @@ public class Assets {
         //Tiles
         GrayTile = ImageLoader.loadImage("/GrayTile.png");
         BlueTile = ImageLoader.loadImage("/BlueTile.png");
+        GreenTile = ImageLoader.loadImage("/GreenTile.png");
         PinkTileA = ImageLoader.loadImage("/PinkTileA.png");
         PinkTileB = ImageLoader.loadImage("/PinkTileB.png");
         PinkTileC = ImageLoader.loadImage("/PinkTileC.png");

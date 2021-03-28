@@ -10,6 +10,7 @@ public class Gargamel extends Dusman{
 
     public Gargamel(Game game, float x, float y, int sira, int sutun, int ID, String Ad, String Tur) {
         super(game, x, y, sira, sutun, ID, Ad, Tur);
+        //this.dijkstra(AdjacencyMatrix, 10,71);
     }
 
     @Override
