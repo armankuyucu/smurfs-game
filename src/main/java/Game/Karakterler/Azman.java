@@ -31,19 +31,22 @@ public class Azman extends Dusman{
     public void EnKisaYol() {
 
         dijkstra(AdjacencyMatrix,azmanSira*13+azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
-            for(int i =0;i<path.size();i++){
-                System.out.print(path.get(i) + " ");
-            }
-
+        for (Integer integer : path) {
+            System.out.print(integer + " ");
+        }
+            System.out.println("path 0 " + path.get(0));
+            azmanSira = path.get(0)/13;
+            azmanSutun = path.get(0) % 13;
+            /*
             if(path.get(1) - path.get(0) == 1 && (GameState.map[azmanSira][azmanSutun+1] == 1)){
                 azmanSutun++;
                 System.out.println("sutun++");
             }
-            else if(path.get(1) - path.get(0) == -1 && (GameState.map[azmanSira][azmanSutun-1] == 1)){
+            if(path.get(1) - path.get(0) == -1 && (GameState.map[azmanSira][azmanSutun-1] == 1)){
                 azmanSutun--;
                 System.out.println("sutun--");
             }
-            else if(path.get(1) - path.get(0) == 13 && (GameState.map[azmanSira+1][azmanSutun] == 1)){
+            else if(path.get(1) - path.get(0) == 13  && (GameState.map[azmanSira+1][azmanSutun] == 1)){
                 azmanSira++;
                 System.out.println("sira++");
             }
@@ -53,12 +56,12 @@ public class Azman extends Dusman{
             }
             else{
                 System.out.println("Hicbiri " + (path.get(1)-path.get(0)) + " ");
-            }
+            }*/
 
 
         azmanSayac = 1;
 
-        //path.remove(0);
+        path.clear();
 
     }
 
