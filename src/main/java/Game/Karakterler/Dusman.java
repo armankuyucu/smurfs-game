@@ -17,6 +17,7 @@ public abstract class Dusman extends Karakter{
     public static int AdjacencyMatrix[][];
     public ArrayList<Integer> path = new ArrayList<>();
 
+    public static int hareketSayaci = 0;
     private static final int V = 143 ;
     public static int parent[] = new int[V];
 
@@ -35,6 +36,10 @@ public abstract class Dusman extends Karakter{
         }
     }
 
+    public Dusman(){
+
+    }
+
     public void update(){
 
     }
@@ -44,7 +49,10 @@ public abstract class Dusman extends Karakter{
     }
 
     public void EnKisaYol(){
-
+        this.dijkstra(AdjacencyMatrix,(sira*13+sutun),(Oyuncu.sutun+Oyuncu.sira*13));
+        for(int i=0;i<path.size();i++){
+            System.out.print(path.get(i) + " ");
+        }
     }
 
     public void readAdjacencyMatrix(){

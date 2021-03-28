@@ -26,6 +26,10 @@ public abstract class Karakter {
         yMove = 0;
     }
 
+    public Karakter(){
+
+    }
+
     public abstract void update();
     public abstract void render(Graphics g);
 

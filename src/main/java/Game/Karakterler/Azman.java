@@ -14,17 +14,18 @@ public class Azman extends Dusman{
         EnKisaYol();
     }
 
+    public Azman(){
+
+    }
+
+    @Override
     public void EnKisaYol(){
-        this.dijkstra(AdjacencyMatrix,(sira*13+sutun),(Oyuncu.sutun+Oyuncu.sira*13));
+        this.dijkstra(AdjacencyMatrix,(this.sira*13+sutun),(Oyuncu.sutun+Oyuncu.sira*13));
         for(int i=0;i<path.size();i++){
             System.out.print(path.get(i) + " ");
         }
-        System.out.println("Sonuc: " + path.get(2) % 13);
     }
 
-    public void PrintDestination(Graphics g){
-
-    }
 
     @Override
     public void update() {
@@ -38,7 +39,7 @@ public class Azman extends Dusman{
             g.drawImage(Assets.GreenTile,(path.get(i) % 13)* Tile.TILEWIDTH,(path.get(i) / 13)*Tile.TILEWIDTH,null);
         }
 
-        g.drawImage(Assets.Azman,(int)x,(int) y,width,height,null);
+        g.drawImage(Assets.Azman,(path.get(hareketSayaci) % 13)* Tile.TILEWIDTH,(path.get(hareketSayaci) / 13)*Tile.TILEWIDTH,width,height,null);
 
     }
 

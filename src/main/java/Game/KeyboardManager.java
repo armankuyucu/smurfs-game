@@ -1,4 +1,6 @@
 package Game;
+import Game.Karakterler.Azman;
+import Game.Karakterler.Dusman;
 import Game.Karakterler.Oyuncu;
 import Game.Objeler.Altin;
 import Game.Objeler.Mantar;
@@ -13,6 +15,7 @@ public class KeyboardManager implements KeyListener{
 
     }
 
+
     @Override
     public void keyTyped(KeyEvent keyEvent) {
     }
@@ -22,6 +25,8 @@ public class KeyboardManager implements KeyListener{
         int keyCode = keyEvent.getKeyCode();
         int siraTemp;
         int sutunTemp;
+
+        Dusman.hareketSayaci++;
         switch (keyCode) {
 
             case KeyEvent.VK_UP -> {
