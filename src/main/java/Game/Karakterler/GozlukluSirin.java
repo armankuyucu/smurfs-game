@@ -14,7 +14,6 @@ public class GozlukluSirin extends Oyuncu{
     }
 
     public void update() {
-        move();
         Altin.AltinCollisionDetection();
         Mantar.MantarCollisionDetection();
     }

@@ -1,6 +1,7 @@
 package Game;
 import Game.Karakterler.Azman;
 import Game.Karakterler.Dusman;
+import Game.Karakterler.Gargamel;
 import Game.Karakterler.Oyuncu;
 import Game.Objeler.Altin;
 import Game.Objeler.Mantar;
@@ -29,6 +30,7 @@ public class KeyboardManager implements KeyListener{
 
             case KeyEvent.VK_UP -> {
                 Dusman.pressed = true;
+                Gargamel.pressed2 = true;
 
                 if(MenuState.ButtonID == 2){
                     Oyuncu.sira--;
@@ -65,6 +67,7 @@ public class KeyboardManager implements KeyListener{
 
             case KeyEvent.VK_DOWN -> {
                 Dusman.pressed = true;
+                Gargamel.pressed2 = true;
 
                 siraTemp = Oyuncu.sira + 2;
                 sutunTemp = Oyuncu.sutun;
@@ -105,6 +108,7 @@ public class KeyboardManager implements KeyListener{
 
             case KeyEvent.VK_LEFT -> {
                 Dusman.pressed = true;
+                Gargamel.pressed2 = true;
 
                 siraTemp = Oyuncu.sira;
                 sutunTemp = Oyuncu.sutun-2;
@@ -144,6 +148,7 @@ public class KeyboardManager implements KeyListener{
 
             case KeyEvent.VK_RIGHT -> {
                 Dusman.pressed = true;
+                Gargamel.pressed2 = true;
 
                 siraTemp = Oyuncu.sira;
                 sutunTemp = Oyuncu.sutun + 2;

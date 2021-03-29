@@ -19,11 +19,6 @@ public abstract class Oyuncu extends Karakter{
         Oyuncu.sutun = sutun;
     }
 
-    public void move(){
-        x += xMove;
-        y += yMove;
-    }
-
     @Override
     public void update() {
         System.out.println("girdi");

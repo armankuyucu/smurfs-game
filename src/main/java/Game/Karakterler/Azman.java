@@ -4,20 +4,18 @@ import Game.Game;
 import Game.Assets;
 import Game.States.GameState;
 import Game.Tiles.Tile;
+import Game.Lokasyon;
 
 import java.awt.*;
 
 public class Azman extends Dusman{
 
-    public static int azmanSatir,azmanSutun;
-    public boolean ilkKez = false;
-    int azmanSayac = 0;
 
-    public Azman(Game game, float x, float y, int sira, int sutun, int ID, String Ad, String Tur) {
+    public Azman(Game game, float x, float y, int satir, int sutun, int ID, String Ad, String Tur) {
         super(game, x, y, ID, Ad, Tur);
-        azmanSutun = sutun;
-        azmanSatir = sira;
-        dijkstra(AdjacencyMatrix, azmanSatir *13+azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
+        Lokasyon.azmanSutun = sutun;
+        Lokasyon.azmanSatir = satir;
+        dijkstra(AdjacencyMatrix,Lokasyon.path, Lokasyon.azmanSatir *13+Lokasyon.azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
     }
 
     public Azman(){
@@ -26,30 +24,30 @@ public class Azman extends Dusman{
 
     @Override
     public void EnKisaYol() {
-        path.clear();
-        dijkstra(AdjacencyMatrix, azmanSatir *13+azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
-        path.add(Oyuncu.sira*13+Oyuncu.sutun);
+        Lokasyon.path.clear();
+        dijkstra(AdjacencyMatrix, Lokasyon.path,Lokasyon.azmanSatir *13+Lokasyon.azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
+        Lokasyon.path.add(Oyuncu.sira*13+Oyuncu.sutun);
         try {
-            if(!(path.isEmpty())) {
-                azmanSatir = path.get(1) / 13;
-                azmanSutun = path.get(1) % 13;
+            if(!(Lokasyon.path.isEmpty())) {
+                Lokasyon.azmanSatir = Lokasyon.path.get(1) / 13;
+                Lokasyon.azmanSutun = Lokasyon.path.get(1) % 13;
             }else{
                // System.out.println("Girdi");
                 azmaniSifirla();
-                dijkstra(AdjacencyMatrix, azmanSatir *13+azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
+                dijkstra(AdjacencyMatrix, Lokasyon.path,Lokasyon.azmanSatir *13+Lokasyon.azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
             }
         }catch (Exception e){
             e.printStackTrace();
         }
 
-        for (Integer integer : path) {
+        for (Integer integer : Lokasyon.path) {
             System.out.print(integer + " ");
         }
         azmanCollisionDetection();
     }
 
     public void azmanCollisionDetection(){
-        if(azmanSutun == Oyuncu.sutun && azmanSatir == Oyuncu.sira){
+        if(Lokasyon.azmanSutun == Oyuncu.sutun && Lokasyon.azmanSatir == Oyuncu.sira){
             Puan.Skor -=5;
             azmaniSifirla();
         }
@@ -59,21 +57,21 @@ public class Azman extends Dusman{
         if(GameState.dusman2[1].equals("Azman")){
             if(GameState.kapi2[1].equals("A")){
                 System.out.println("Girdi");
-                azmanSatir = 0;
-                azmanSutun = 3;
+                Lokasyon.azmanSatir = 0;
+                Lokasyon.azmanSutun = 3;
             }
             else if(GameState.kapi2[1].equals("B")){
-                azmanSatir = 0;
-                azmanSutun = 10;
+                Lokasyon.azmanSatir = 0;
+                Lokasyon.azmanSutun = 10;
             }
             else if(GameState.kapi2[1].equals("C")){
-                azmanSatir = 5;
-                azmanSutun = 0;
+                Lokasyon.azmanSatir = 5;
+                Lokasyon.azmanSutun = 0;
 
             }
             else if(GameState.kapi2[1].equals("D")){
-                azmanSatir = 11;
-                azmanSutun = 3;
+                Lokasyon.azmanSatir = 10;
+                Lokasyon.azmanSutun = 3;
             }
         }
 
@@ -89,10 +87,11 @@ public class Azman extends Dusman{
 
     @Override
     public void render(Graphics g) {
-        for(int i=1;i<path.size();i++){
-            g.drawImage(Assets.GreenTile,(path.get(i)%13)*Tile.TILEWIDTH,(path.get(i)/13)*Tile.TILEHEIGHT,null);
+        if((!GameState.dusman1[1].equals("Gargamel")) && (GameState.dusman2[1].equals("Azman"))){
+            for(int i=2;i<Lokasyon.path.size()-1;i++){
+                g.drawImage(Assets.GreenTile,(Lokasyon.path.get(i)%13)*Tile.TILEWIDTH,(Lokasyon.path.get(i)/13)*Tile.TILEHEIGHT,null);
+            }
         }
-
-        g.drawImage(Assets.Azman,azmanSutun*Tile.TILEWIDTH, azmanSatir *Tile.TILEWIDTH,width,height,null);
+        g.drawImage(Assets.Azman,Lokasyon.azmanSutun*Tile.TILEWIDTH, Lokasyon.azmanSatir *Tile.TILEWIDTH,width,height,null);
     }
 }

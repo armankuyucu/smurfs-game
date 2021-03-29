@@ -13,7 +13,6 @@ public class TembelSirin extends Oyuncu{
     }
 
     public void update() {
-        move();
         Altin.AltinCollisionDetection();
         Mantar.MantarCollisionDetection();
     }

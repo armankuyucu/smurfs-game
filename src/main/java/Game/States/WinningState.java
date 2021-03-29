@@ -6,8 +6,8 @@ import Game.Karakterler.Puan;
 
 import java.awt.*;
 
-public class WinState extends State{
-    public WinState(Game game) {
+public class WinningState extends State{
+    public WinningState(Game game) {
         super(game);
     }
 

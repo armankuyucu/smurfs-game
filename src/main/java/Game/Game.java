@@ -1,10 +1,11 @@
 package Game;
 
 import Game.Karakterler.Oyuncu;
-import Game.States.GameState;
+import Game.Karakterler.Puan;
+import Game.States.LosingState;
 import Game.States.MenuState;
 import Game.States.State;
-import Game.States.WinState;
+import Game.States.WinningState;
 
 import java.awt.image.BufferStrategy;
 import java.util.logging.Level;
@@ -28,7 +29,8 @@ public class Game implements Runnable {
     //States
     public State gameState;
     public State menuState;
-    public State winState;
+    public State winningState;
+    public State losingState;
 
     public MouseManager getMouseManager() {
         return mouseManager;
@@ -39,6 +41,7 @@ public class Game implements Runnable {
         this.width = width;
         this.title = title;
         mouseManager = new MouseManager();
+        Puan.Skor = 20;
     }
 
     public void init() {
@@ -59,8 +62,12 @@ public class Game implements Runnable {
             State.getState().update();
         }
         if(Oyuncu.sutun == 12 && Oyuncu.sira == 7){
-            winState = new WinState(this);
-            State.setState(winState);
+            winningState = new WinningState(this);
+            State.setState(winningState);
+        }
+        if(Puan.Skor <= 0){
+            losingState = new LosingState(this);
+            State.setState(losingState);
         }
 
     }

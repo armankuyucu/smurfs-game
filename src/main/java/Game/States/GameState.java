@@ -21,7 +21,6 @@ public class GameState extends State{
     public static int[][] map;
     public static String line1, line2;
     public static String[] column1,column2,dusman1,dusman2,kapi1,kapi2;
-    public static int[][] AdjacencyMatrix;
 
     public GameState(Game game){
         super(game);
@@ -35,23 +34,23 @@ public class GameState extends State{
         }
         if(GameState.dusman1[1].equals("Gargamel")){
             if(GameState.kapi1[1].equals("A"))
-                gargamel = new Gargamel(game,3*Tile.TILEWIDTH+10,5,0,3,0,"Gargamel","Dusman");
+                gargamel = new Gargamel(game, 3 * Tile.TILEWIDTH + 10, 5, 0, 3, 0, "Gargamel", "Dusman");
             else if(GameState.kapi1[1].equals("B"))
                 gargamel = new Gargamel(game,10*Tile.TILEWIDTH+10,5,0,10,0,"Gargamel","Dusman");
             else if(GameState.kapi1[1].equals("C"))
                 gargamel = new Gargamel(game,10,5*Tile.TILEWIDTH+5,5,0,0,"Gargamel","Dusman");
             else if(GameState.kapi1[1].equals("D"))
-                gargamel = new Gargamel(game,3*Tile.TILEWIDTH+10,10*Tile.TILEWIDTH+5,11,3,0,"Gargamel","Dusman");
+                gargamel = new Gargamel(game,3*Tile.TILEWIDTH+10,10*Tile.TILEWIDTH+5,10,3,0,"Gargamel","Dusman");
         }
         if(GameState.dusman2[1].equals("Azman")){
             if(GameState.kapi2[1].equals("A"))
-                azman = new Azman(game,3*Tile.TILEWIDTH,0,0,3,0,"Azman","Dusman");
+                azman = new Azman(game,3*Tile.TILEWIDTH+10,0,0,3,0,"Azman","Dusman");
             else if(GameState.kapi2[1].equals("B"))
-                azman = new Azman(game,10*Tile.TILEWIDTH,0,0,10,0,"Azman","Dusman");
+                azman = new Azman(game,10*Tile.TILEWIDTH+10,0,0,10,0,"Azman","Dusman");
             else if(GameState.kapi2[1].equals("C"))
-                azman = new Azman(game,0,5*Tile.TILEWIDTH,5,0,0,"Azman","Dusman");
+                azman = new Azman(game,0,5*Tile.TILEWIDTH+10,5,0,0,"Azman","Dusman");
             else if(GameState.kapi2[1].equals("D"))
-                azman = new Azman(game,3*Tile.TILEWIDTH,10*Tile.TILEWIDTH,11,3,0,"Azman","Dusman");
+                azman = new Azman(game,3*Tile.TILEWIDTH+10,10*Tile.TILEWIDTH,10,3,0,"Azman","Dusman");
         }
 
         mantar = new Mantar(14,-100,-100,false);
@@ -120,6 +119,7 @@ public class GameState extends State{
             }
         }
 
+
         if(GameState.dusman1[1].equals("Gargamel"))
             gargamel.render(g);
         if(GameState.dusman2[1].equals("Azman"))
@@ -145,8 +145,8 @@ public class GameState extends State{
 
         //Skor
         g.setColor(Color.RED);
-        g.setFont(new Font(Font.SANS_SERIF,Font.BOLD,35));
-        g.drawString(String.format("Skor : %d",Puan.Skor),650,680);
+        g.setFont(new Font(Font.SANS_SERIF,Font.BOLD,45));
+        g.drawString(String.format("Skor: %d",Puan.Skor),615,690);
     }
 
 
@@ -191,8 +191,6 @@ public class GameState extends State{
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        //Graph_Shortest_Path g = new Graph_Shortest_Path();
 
     }
 

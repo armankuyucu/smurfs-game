@@ -3,8 +3,8 @@ package Game.Karakterler;
 import java.awt.*;
 
 public abstract class Karakter {
-    //Bu siniftan kalitim alan sınıflarında kullanmasi icin protected
-    public static final float DEFAULT_SPEED = 90.0f;
+
+    //Bu siniftan kalitim alan sınıflarin da kullanmasi icin protected
     public static final int DEFAULT_CHARACTER_WIDTH = 40,
                             DEFAULT_CHARACTER_HEIGHT = 60;
 
@@ -12,8 +12,6 @@ public abstract class Karakter {
     protected String Ad;
     protected String Tur;
     protected int width, height;
-    protected float speed;
-    protected float xMove, yMove;
 
     public Karakter(int width, int height, int ID, String Ad, String Tur){
         this.ID = ID;
@@ -21,9 +19,6 @@ public abstract class Karakter {
         this.Tur = Tur;
         this.width = width;
         this.height = height;
-        speed = DEFAULT_SPEED;
-        xMove = 0;
-        yMove = 0;
     }
 
     public Karakter(){
@@ -36,6 +31,7 @@ public abstract class Karakter {
     public void EnKisaYol(){
 
     }
+    //Getters and Setters
 
     public int getWidth() {
         return width;
@@ -52,32 +48,6 @@ public abstract class Karakter {
     public void setHeight(int height) {
         this.height = height;
     }
-
-    //Getters and Setters
-    public float getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(float speed) {
-        this.speed = speed;
-    }
-
-    public float getxMove() {
-        return xMove;
-    }
-
-    public void setxMove(float xMove) {
-        this.xMove = xMove;
-    }
-
-    public float getyMove() {
-        return yMove;
-    }
-
-    public void setyMove(float yMove) {
-        this.yMove = yMove;
-    }
-
 
 }
 
