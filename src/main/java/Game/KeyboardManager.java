@@ -25,11 +25,11 @@ public class KeyboardManager implements KeyListener{
         int keyCode = keyEvent.getKeyCode();
         int siraTemp;
         int sutunTemp;
-        Dusman.pressed = true;
-        Dusman.hareketSayaci++;
         switch (keyCode) {
 
             case KeyEvent.VK_UP -> {
+                Dusman.pressed = true;
+
                 if(MenuState.ButtonID == 2){
                     Oyuncu.sira--;
 
@@ -64,6 +64,8 @@ public class KeyboardManager implements KeyListener{
             }
 
             case KeyEvent.VK_DOWN -> {
+                Dusman.pressed = true;
+
                 siraTemp = Oyuncu.sira + 2;
                 sutunTemp = Oyuncu.sutun;
                 if(siraTemp == 11){ // Matrix out of bounds hatasini vermemesi icin
@@ -102,6 +104,8 @@ public class KeyboardManager implements KeyListener{
             }
 
             case KeyEvent.VK_LEFT -> {
+                Dusman.pressed = true;
+
                 siraTemp = Oyuncu.sira;
                 sutunTemp = Oyuncu.sutun-2;
                 if(sutunTemp == -1){
@@ -139,6 +143,8 @@ public class KeyboardManager implements KeyListener{
             }
 
             case KeyEvent.VK_RIGHT -> {
+                Dusman.pressed = true;
+
                 siraTemp = Oyuncu.sira;
                 sutunTemp = Oyuncu.sutun + 2;
                 if(sutunTemp == 14 || sutunTemp == 13){

@@ -6,6 +6,7 @@ import Game.States.GameState;
 import Game.Tiles.Tile;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Azman extends Dusman{
 
@@ -15,12 +16,9 @@ public class Azman extends Dusman{
 
     public Azman(Game game, float x, float y, int sira, int sutun, int ID, String Ad, String Tur) {
         super(game, x, y, ID, Ad, Tur);
-        System.out.println("sira: " + sira);
         azmanSutun = sutun;
         azmanSira = sira;
-        EnKisaYol();
-        System.out.println("Azmansira: " + azmanSira);
-        System.out.println("AzmanSutun: " + azmanSutun);
+        dijkstra(AdjacencyMatrix,azmanSira*13+azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
     }
 
     public Azman(){
@@ -29,14 +27,27 @@ public class Azman extends Dusman{
 
     @Override
     public void EnKisaYol() {
-
+        path.clear();
         dijkstra(AdjacencyMatrix,azmanSira*13+azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
+
+        try {
+            if(!(path.isEmpty())) {
+                azmanSira = path.get(1) / 13;
+                azmanSutun = path.get(1) % 13;
+            }else{
+                System.out.println("Girdi");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         for (Integer integer : path) {
             System.out.print(integer + " ");
         }
-            System.out.println("path 0 " + path.get(0));
-            azmanSira = path.get(0)/13;
-            azmanSutun = path.get(0) % 13;
+           // System.out.println("path 0 " + path.get(0));
+
+
+
             /*
             if(path.get(1) - path.get(0) == 1 && (GameState.map[azmanSira][azmanSutun+1] == 1)){
                 azmanSutun++;
@@ -59,17 +70,13 @@ public class Azman extends Dusman{
             }*/
 
 
-        azmanSayac = 1;
-
-        path.clear();
-
     }
 
     @Override
     public void update() {
         if(pressed){
-            pressed = false;
             EnKisaYol();
+            pressed = false;
         }
     }
 

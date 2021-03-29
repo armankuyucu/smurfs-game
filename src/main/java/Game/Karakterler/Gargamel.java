@@ -12,7 +12,6 @@ public class Gargamel extends Dusman{
         super(game, x, y, ID, Ad, Tur);
         this.sira = sira;
         this.sutun = sutun;
-        //this.dijkstra(AdjacencyMatrix, 10,71);
     }
 
     @Override

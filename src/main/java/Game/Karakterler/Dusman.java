@@ -90,14 +90,13 @@ public abstract class Dusman extends Karakter{
     // using parent array
     public void printPath(int parent[], int j,int src)
     {
-
         // Base Case : If j is source
-        if (parent[j] < src) {
+        if (parent[j] == src) {
             return;
         }
         printPath(parent, parent[j],src);
-        path.add(j);
 
+        path.add(j);
         /*if(sayac == path.size()-1){
             birSonraki = j;
             sayac = 0;
@@ -110,14 +109,14 @@ public abstract class Dusman extends Karakter{
     // A utility function to print
     // the constructed distance
     // array
-    void printSolution(int dist[], int n, int parent[],int destination)
+    void printSolution(int dist[], int src, int parent[],int destination)
     {
-        int src = n; //Here im using n as the src, instead of 0
         System.out.println("Vertex\t Distance\tPath");
-        for (int i = 0; i < V; i++) // Here I changed 1 for 0 so it would show the path to 0 in case src is not 0
+        for (int i = 1; i < V; i++) // Here I changed 1 for 0 so it would show the path to 0 in case src is not 0
         {
-            if(i == destination){
+            if((i != src) && (i == destination)){
                 System.out.println(String.format("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i], src));
+                path.add(0,src);
                 printPath(parent, i,src);
             }
         }
@@ -141,6 +140,7 @@ public abstract class Dusman extends Karakter{
         // from src to i is finalized
         boolean sptSet[] =new boolean[V];
 
+        //path = new ArrayList<>();
         // Parent array to store
         // shortest path tree
         // Initialize all distances as
