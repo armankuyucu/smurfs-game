@@ -96,7 +96,7 @@ public abstract class Dusman extends Karakter{
         }
         printPath(parent, parent[j],src);
 
-        path.add(j);
+        path.add(parent[j]);
         /*if(sayac == path.size()-1){
             birSonraki = j;
             sayac = 0;
@@ -111,12 +111,13 @@ public abstract class Dusman extends Karakter{
     // array
     void printSolution(int dist[], int src, int parent[],int destination)
     {
+        path.add(0,src);
         System.out.println("Vertex\t Distance\tPath");
         for (int i = 1; i < V; i++) // Here I changed 1 for 0 so it would show the path to 0 in case src is not 0
         {
             if((i != src) && (i == destination)){
                 System.out.println(String.format("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i], src));
-                path.add(0,src);
+
                 printPath(parent, i,src);
             }
         }
