@@ -6,19 +6,18 @@ import Game.States.GameState;
 import Game.Tiles.Tile;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Azman extends Dusman{
 
-    public static int azmanSira,azmanSutun;
+    public static int azmanSatir,azmanSutun;
     public boolean ilkKez = false;
     int azmanSayac = 0;
 
     public Azman(Game game, float x, float y, int sira, int sutun, int ID, String Ad, String Tur) {
         super(game, x, y, ID, Ad, Tur);
         azmanSutun = sutun;
-        azmanSira = sira;
-        dijkstra(AdjacencyMatrix,azmanSira*13+azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
+        azmanSatir = sira;
+        dijkstra(AdjacencyMatrix, azmanSatir *13+azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
     }
 
     public Azman(){
@@ -28,14 +27,16 @@ public class Azman extends Dusman{
     @Override
     public void EnKisaYol() {
         path.clear();
-        dijkstra(AdjacencyMatrix,azmanSira*13+azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
-
+        dijkstra(AdjacencyMatrix, azmanSatir *13+azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
+        path.add(Oyuncu.sira*13+Oyuncu.sutun);
         try {
             if(!(path.isEmpty())) {
-                azmanSira = path.get(1) / 13;
+                azmanSatir = path.get(1) / 13;
                 azmanSutun = path.get(1) % 13;
             }else{
-                System.out.println("Girdi");
+               // System.out.println("Girdi");
+                azmaniSifirla();
+                dijkstra(AdjacencyMatrix, azmanSatir *13+azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -44,31 +45,37 @@ public class Azman extends Dusman{
         for (Integer integer : path) {
             System.out.print(integer + " ");
         }
-           // System.out.println("path 0 " + path.get(0));
+        azmanCollisionDetection();
+    }
 
+    public void azmanCollisionDetection(){
+        if(azmanSutun == Oyuncu.sutun && azmanSatir == Oyuncu.sira){
+            Puan.Skor -=5;
+            azmaniSifirla();
+        }
+    }
 
+    public void azmaniSifirla(){
+        if(GameState.dusman2[1].equals("Azman")){
+            if(GameState.kapi2[1].equals("A")){
+                System.out.println("Girdi");
+                azmanSatir = 0;
+                azmanSutun = 3;
+            }
+            else if(GameState.kapi2[1].equals("B")){
+                azmanSatir = 0;
+                azmanSutun = 10;
+            }
+            else if(GameState.kapi2[1].equals("C")){
+                azmanSatir = 5;
+                azmanSutun = 0;
 
-            /*
-            if(path.get(1) - path.get(0) == 1 && (GameState.map[azmanSira][azmanSutun+1] == 1)){
-                azmanSutun++;
-                System.out.println("sutun++");
             }
-            if(path.get(1) - path.get(0) == -1 && (GameState.map[azmanSira][azmanSutun-1] == 1)){
-                azmanSutun--;
-                System.out.println("sutun--");
+            else if(GameState.kapi2[1].equals("D")){
+                azmanSatir = 11;
+                azmanSutun = 3;
             }
-            else if(path.get(1) - path.get(0) == 13  && (GameState.map[azmanSira+1][azmanSutun] == 1)){
-                azmanSira++;
-                System.out.println("sira++");
-            }
-            else if(path.get(1) - path.get(0) == -13 && (GameState.map[azmanSira-1][azmanSutun] == 1)){
-                azmanSira--;
-                System.out.println("sira--");
-            }
-            else{
-                System.out.println("Hicbiri " + (path.get(1)-path.get(0)) + " ");
-            }*/
-
+        }
 
     }
 
@@ -82,6 +89,10 @@ public class Azman extends Dusman{
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.Azman,azmanSutun*Tile.TILEWIDTH,azmanSira*Tile.TILEWIDTH,width,height,null);
+        for(int i=1;i<path.size();i++){
+            g.drawImage(Assets.GreenTile,(path.get(i)%13)*Tile.TILEWIDTH,(path.get(i)/13)*Tile.TILEHEIGHT,null);
+        }
+
+        g.drawImage(Assets.Azman,azmanSutun*Tile.TILEWIDTH, azmanSatir *Tile.TILEWIDTH,width,height,null);
     }
 }

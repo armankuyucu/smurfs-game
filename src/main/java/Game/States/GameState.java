@@ -125,6 +125,7 @@ public class GameState extends State{
         if(GameState.dusman2[1].equals("Azman"))
             azman.render(g);
 
+
         for(int y=0;y<11;y++){
             for(int x=0;x<13;x++) {
                 g.setColor(Color.BLACK);

@@ -84,7 +84,6 @@ public abstract class Dusman extends Karakter{
     }
 
     int sayac = 0;
-    public static int birSonraki;
     // Function to print shortest
     // path from source to j
     // using parent array
@@ -97,12 +96,6 @@ public abstract class Dusman extends Karakter{
         printPath(parent, parent[j],src);
 
         path.add(parent[j]);
-        /*if(sayac == path.size()-1){
-            birSonraki = j;
-            sayac = 0;
-        }*/
-
-        sayac++;
 
     }
 
