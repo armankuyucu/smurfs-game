@@ -21,4 +21,12 @@ public abstract class State {
 
     public abstract void update();
     public abstract void render(Graphics g);
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
 }

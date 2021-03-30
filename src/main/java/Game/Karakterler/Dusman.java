@@ -21,7 +21,7 @@ public abstract class Dusman extends Karakter{
 
     private static final int V = 143 ;
 
-    public Dusman(Game game,float x, float y, int ID, String Ad, String Tur) {
+    public Dusman(Game game, float x, float y, int ID, String Ad, String Tur) {
         super(Karakter.DEFAULT_CHARACTER_WIDTH,Karakter.DEFAULT_CHARACTER_HEIGHT,ID, Ad, Tur);
         this.game = game;
         this.x = x;
@@ -35,7 +35,6 @@ public abstract class Dusman extends Karakter{
 
     public void EnKisaYol(){
     }
-    //Reads AdjacencyMatrix.txt
 
     public void readAdjacencyMatrix(){
 
@@ -92,7 +91,7 @@ public abstract class Dusman extends Karakter{
     // A utility function to print
     // the constructed distance
     // array
-    void printSolution(int dist[], ArrayList<Integer> path, int src, int parent[],int destination)
+    public void printSolution(int dist[], ArrayList<Integer> path, int src, int parent[],int destination)
     {
         path.add(0,src);
         //System.out.println("Vertex\t Distance\tPath");
@@ -181,5 +180,58 @@ public abstract class Dusman extends Karakter{
         printSolution(dist, path,src, parent,destination);
     }
 
+    @Override
+    public int getID() {
+        return ID;
+    }
+
+    @Override
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    @Override
+    public String getAd() {
+        return Ad;
+    }
+
+    @Override
+    public void setAd(String ad) {
+        Ad = ad;
+    }
+
+    @Override
+    public String getTur() {
+        return Tur;
+    }
+
+    @Override
+    public void setTur(String tur) {
+        Tur = tur;
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
 
 }

@@ -18,4 +18,60 @@ public abstract class Obje {
 
     public abstract void update();
     public abstract void render(Graphics g);
+
+    public int getOlusmaSuresi() {
+        return olusmaSuresi;
+    }
+
+    public void setOlusmaSuresi(int olusmaSuresi) {
+        this.olusmaSuresi = olusmaSuresi;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public Timer getTimer() {
+        return timer;
+    }
+
+    public void setTimer(Timer timer) {
+        this.timer = timer;
+    }
+
+    public int getSatir() {
+        return satir;
+    }
+
+    public void setSatir(int satir) {
+        this.satir = satir;
+    }
+
+    public int getSutun() {
+        return sutun;
+    }
+
+    public void setSutun(int sutun) {
+        this.sutun = sutun;
+    }
+
+    public boolean isUsed() {
+        return used;
+    }
+
+    public void setUsed(boolean used) {
+        this.used = used;
+    }
 }

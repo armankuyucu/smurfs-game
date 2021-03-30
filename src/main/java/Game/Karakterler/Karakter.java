@@ -28,10 +28,35 @@ public abstract class Karakter {
     public abstract void update();
     public abstract void render(Graphics g);
 
+    //Getters and Setters
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getAd() {
+        return Ad;
+    }
+
+    public void setAd(String ad) {
+        Ad = ad;
+    }
+
+    public String getTur() {
+        return Tur;
+    }
+
+    public void setTur(String tur) {
+        Tur = tur;
+    }
+
     public void EnKisaYol(){
 
     }
-    //Getters and Setters
 
     public int getWidth() {
         return width;

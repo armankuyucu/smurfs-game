@@ -183,5 +183,117 @@ public class GameState extends State{
 
     }
 
+    public Oyuncu getOyuncu() {
+        return oyuncu;
+    }
+
+    public void setOyuncu(Oyuncu oyuncu) {
+        this.oyuncu = oyuncu;
+    }
+
+    public Dusman getGargamel() {
+        return gargamel;
+    }
+
+    public void setGargamel(Dusman gargamel) {
+        this.gargamel = gargamel;
+    }
+
+    public Dusman getAzman() {
+        return azman;
+    }
+
+    public void setAzman(Dusman azman) {
+        this.azman = azman;
+    }
+
+    public static Altin[] getAltinListesi() {
+        return AltinListesi;
+    }
+
+    public static void setAltinListesi(Altin[] altinListesi) {
+        AltinListesi = altinListesi;
+    }
+
+    public static Mantar getMantar() {
+        return mantar;
+    }
+
+    public static void setMantar(Mantar mantar) {
+        GameState.mantar = mantar;
+    }
+
+    public static int[][] getMap() {
+        return map;
+    }
+
+    public static void setMap(int[][] map) {
+        GameState.map = map;
+    }
+
+    public static String getLine1() {
+        return line1;
+    }
+
+    public static void setLine1(String line1) {
+        GameState.line1 = line1;
+    }
+
+    public static String getLine2() {
+        return line2;
+    }
+
+    public static void setLine2(String line2) {
+        GameState.line2 = line2;
+    }
+
+    public static String[] getColumn1() {
+        return column1;
+    }
+
+    public static void setColumn1(String[] column1) {
+        GameState.column1 = column1;
+    }
+
+    public static String[] getColumn2() {
+        return column2;
+    }
+
+    public static void setColumn2(String[] column2) {
+        GameState.column2 = column2;
+    }
+
+    public static String[] getDusman1() {
+        return dusman1;
+    }
+
+    public static void setDusman1(String[] dusman1) {
+        GameState.dusman1 = dusman1;
+    }
+
+    public static String[] getDusman2() {
+        return dusman2;
+    }
+
+    public static void setDusman2(String[] dusman2) {
+        GameState.dusman2 = dusman2;
+    }
+
+    public static String[] getKapi1() {
+        return kapi1;
+    }
+
+    public static void setKapi1(String[] kapi1) {
+        GameState.kapi1 = kapi1;
+    }
+
+    public static String[] getKapi2() {
+        return kapi2;
+    }
+
+    public static void setKapi2(String[] kapi2) {
+        GameState.kapi2 = kapi2;
+    }
+
 
 }
