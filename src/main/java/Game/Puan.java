@@ -1,4 +1,4 @@
-package Game.Karakterler;
+package Game;
 
 public class Puan {
     public static int Skor = 0;

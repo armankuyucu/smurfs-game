@@ -1,6 +1,4 @@
-package Game.States;
-
-import Game.Game;
+package Game;
 
 import java.awt.Graphics;
 

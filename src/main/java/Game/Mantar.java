@@ -1,15 +1,9 @@
-package Game.Objeler;
-
-import Game.Assets;
-import Game.States.GameState;
-import Game.Karakterler.Oyuncu;
-import Game.Karakterler.Puan;
+package Game;
 
 import java.awt.*;
-import java.util.Timer;
 import java.util.TimerTask;
 
-import static Game.States.GameState.mantar;
+import static Game.GameState.mantar;
 
 public class Mantar extends Obje{
 

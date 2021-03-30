@@ -1,6 +1,4 @@
-package Game.Tiles;
-
-import Game.Assets;
+package Game;
 
 public class PinkTileD extends Tile{
     public PinkTileD(int id) {

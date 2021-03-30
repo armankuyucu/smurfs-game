@@ -1,4 +1,4 @@
-package Game.Karakterler;
+package Game;
 
 import java.awt.*;
 

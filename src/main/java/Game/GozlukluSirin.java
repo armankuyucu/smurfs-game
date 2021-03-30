@@ -1,9 +1,4 @@
-package Game.Karakterler;
-
-import Game.Assets;
-import Game.Game;
-import Game.Objeler.Altin;
-import Game.Objeler.Mantar;
+package Game;
 
 import java.awt.*;
 

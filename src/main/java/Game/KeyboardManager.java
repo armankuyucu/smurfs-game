@@ -1,11 +1,4 @@
 package Game;
-import Game.Karakterler.Dusman;
-import Game.Karakterler.Gargamel;
-import Game.Karakterler.Oyuncu;
-import Game.Objeler.Altin;
-import Game.Objeler.Mantar;
-import Game.States.GameState;
-import Game.States.MenuState;
 
 import java.awt.event.*;
 

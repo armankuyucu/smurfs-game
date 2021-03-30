@@ -1,12 +1,5 @@
 package Game;
 
-import Game.Karakterler.Oyuncu;
-import Game.Karakterler.Puan;
-import Game.States.LosingState;
-import Game.States.MenuState;
-import Game.States.State;
-import Game.States.WinningState;
-
 import java.awt.image.BufferStrategy;
 import java.util.logging.Level;
 import java.util.logging.Logger;

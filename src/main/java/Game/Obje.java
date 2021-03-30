@@ -1,4 +1,4 @@
-package Game.Objeler;
+package Game;
 
 import java.awt.*;
 import java.util.Timer;

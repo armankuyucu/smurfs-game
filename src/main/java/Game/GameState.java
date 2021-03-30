@@ -1,10 +1,4 @@
-package Game.States;
-
-import Game.Game;
-import Game.Karakterler.*;
-import Game.Objeler.Altin;
-import Game.Objeler.Mantar;
-import Game.Tiles.Tile;
+package Game;
 
 import java.awt.*;
 import java.io.File;

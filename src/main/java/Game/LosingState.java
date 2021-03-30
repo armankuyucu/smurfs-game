@@ -1,7 +1,4 @@
-package Game.States;
-
-import Game.Game;
-import Game.Karakterler.Puan;
+package Game;
 
 import java.awt.*;
 

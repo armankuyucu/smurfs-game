@@ -1,6 +1,4 @@
-package Game.Tiles;
-
-import Game.Assets;
+package Game;
 
 
 public class PinkTileB extends Tile{

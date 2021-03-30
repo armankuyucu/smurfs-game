@@ -1,7 +1,5 @@
-package Game.States;
+package Game;
 
-import Game.Game;
-import Game.Assets;
 import java.awt.*;
 
 public class MenuState extends State {

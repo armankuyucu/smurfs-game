@@ -1,6 +1,4 @@
-package Game.Tiles;
-
-import Game.Assets;
+package Game;
 
 
 public class GrayTile extends Tile{

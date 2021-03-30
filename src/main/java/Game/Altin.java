@@ -1,14 +1,10 @@
-package Game.Objeler;
-
-import Game.Assets;
-import Game.States.GameState;
-import Game.Karakterler.Oyuncu;
+package Game;
 
 import java.awt.*;
 import java.util.TimerTask;
 
-import static Game.States.GameState.AltinListesi;
-import static Game.Karakterler.Puan.Skor;
+import static Game.GameState.AltinListesi;
+import static Game.Puan.Skor;
 
 public class Altin extends Obje{
 

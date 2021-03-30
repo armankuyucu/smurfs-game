@@ -1,10 +1,4 @@
-package Game.Karakterler;
-
-import Game.Game;
-import Game.Assets;
-import Game.States.GameState;
-import Game.Tiles.Tile;
-import Game.Lokasyon;
+package Game;
 
 import java.awt.*;
 

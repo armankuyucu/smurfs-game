@@ -1,6 +1,4 @@
-package Game.Tiles;
-
-import Game.Assets;
+package Game;
 
 public class WhiteTile extends Tile{
     public WhiteTile(int id){
