@@ -15,7 +15,7 @@ public class Azman extends Dusman{
         super(game, x, y, ID, Ad, Tur);
         Lokasyon.azmanSutun = sutun;
         Lokasyon.azmanSatir = satir;
-        dijkstra(AdjacencyMatrix,Lokasyon.path, Lokasyon.azmanSatir *13+Lokasyon.azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
+        dijkstra(AdjacencyMatrix,Lokasyon.path, Lokasyon.azmanSatir *13+Lokasyon.azmanSutun,Oyuncu.satir *13+Oyuncu.sutun);
     }
 
     public Azman(){
@@ -25,29 +25,25 @@ public class Azman extends Dusman{
     @Override
     public void EnKisaYol() {
         Lokasyon.path.clear();
-        dijkstra(AdjacencyMatrix, Lokasyon.path,Lokasyon.azmanSatir *13+Lokasyon.azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
-        Lokasyon.path.add(Oyuncu.sira*13+Oyuncu.sutun);
+        dijkstra(AdjacencyMatrix, Lokasyon.path,Lokasyon.azmanSatir *13+Lokasyon.azmanSutun,Oyuncu.satir *13+Oyuncu.sutun);
+        Lokasyon.path.add(Oyuncu.satir *13+Oyuncu.sutun);
         try {
             if(!(Lokasyon.path.isEmpty())) {
                 Lokasyon.azmanSatir = Lokasyon.path.get(1) / 13;
                 Lokasyon.azmanSutun = Lokasyon.path.get(1) % 13;
             }else{
-               // System.out.println("Girdi");
                 azmaniSifirla();
-                dijkstra(AdjacencyMatrix, Lokasyon.path,Lokasyon.azmanSatir *13+Lokasyon.azmanSutun,Oyuncu.sira*13+Oyuncu.sutun);
+                dijkstra(AdjacencyMatrix, Lokasyon.path,Lokasyon.azmanSatir *13+Lokasyon.azmanSutun,Oyuncu.satir *13+Oyuncu.sutun);
             }
         }catch (Exception e){
             e.printStackTrace();
         }
 
-        for (Integer integer : Lokasyon.path) {
-            System.out.print(integer + " ");
-        }
         azmanCollisionDetection();
     }
 
     public void azmanCollisionDetection(){
-        if(Lokasyon.azmanSutun == Oyuncu.sutun && Lokasyon.azmanSatir == Oyuncu.sira){
+        if(Lokasyon.azmanSutun == Oyuncu.sutun && Lokasyon.azmanSatir == Oyuncu.satir){
             Puan.Skor -=5;
             azmaniSifirla();
         }
@@ -56,7 +52,6 @@ public class Azman extends Dusman{
     public void azmaniSifirla(){
         if(GameState.dusman2[1].equals("Azman")){
             if(GameState.kapi2[1].equals("A")){
-                System.out.println("Girdi");
                 Lokasyon.azmanSatir = 0;
                 Lokasyon.azmanSutun = 3;
             }

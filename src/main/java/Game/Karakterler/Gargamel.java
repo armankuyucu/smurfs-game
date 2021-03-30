@@ -15,7 +15,7 @@ public class Gargamel extends Dusman{
         super(game, x, y, ID, Ad, Tur);
         Lokasyon.gargamelSatir = satir;
         Lokasyon.gargamelSutun = sutun;
-        dijkstra(AdjacencyMatrix, Lokasyon.path2,Lokasyon.gargamelSatir *13+Lokasyon.gargamelSutun,Oyuncu.sira*13+Oyuncu.sutun);
+        dijkstra(AdjacencyMatrix, Lokasyon.path2,Lokasyon.gargamelSatir *13+Lokasyon.gargamelSutun,Oyuncu.satir *13+Oyuncu.sutun);
     }
 
     public Gargamel(){
@@ -25,8 +25,8 @@ public class Gargamel extends Dusman{
     @Override
     public void EnKisaYol() {
         Lokasyon.path2.clear();
-        dijkstra(AdjacencyMatrix, Lokasyon.path2,Lokasyon.gargamelSatir *13+Lokasyon.gargamelSutun,Oyuncu.sira*13+Oyuncu.sutun);
-        Lokasyon.path2.add(Oyuncu.sira*13+Oyuncu.sutun);
+        dijkstra(AdjacencyMatrix, Lokasyon.path2,Lokasyon.gargamelSatir *13+Lokasyon.gargamelSutun,Oyuncu.satir *13+Oyuncu.sutun);
+        Lokasyon.path2.add(Oyuncu.satir *13+Oyuncu.sutun);
         try {
             if(!(Lokasyon.path2.isEmpty())) {
                 if(Lokasyon.path2.size() == 2){
@@ -39,20 +39,17 @@ public class Gargamel extends Dusman{
             }
             else{
                 gargameliSifirla();
-                dijkstra(AdjacencyMatrix, Lokasyon.path2,Lokasyon.gargamelSatir *13+ Lokasyon.gargamelSutun,Oyuncu.sira*13+Oyuncu.sutun);
+                dijkstra(AdjacencyMatrix, Lokasyon.path2,Lokasyon.gargamelSatir *13+ Lokasyon.gargamelSutun,Oyuncu.satir *13+Oyuncu.sutun);
             }
         }catch (Exception e){
             e.printStackTrace();
         }
 
-        for (Integer integer : Lokasyon.path2) {
-            System.out.print(integer + " ");
-        }
         gargamelCollisionDetection();
     }
 
     public void gargamelCollisionDetection(){
-        if(Lokasyon.gargamelSutun == Oyuncu.sutun && Lokasyon.gargamelSatir == Oyuncu.sira){
+        if(Lokasyon.gargamelSutun == Oyuncu.sutun && Lokasyon.gargamelSatir == Oyuncu.satir){
             Puan.Skor -=15;
             gargameliSifirla();
         }
@@ -61,7 +58,6 @@ public class Gargamel extends Dusman{
     public void gargameliSifirla(){
         if(GameState.dusman1[1].equals("Gargamel")){
             if(GameState.kapi1[1].equals("A")){
-                System.out.println("Girdi");
                 Lokasyon.gargamelSatir = 0;
                 Lokasyon.gargamelSutun = 3;
             }

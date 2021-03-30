@@ -74,7 +74,6 @@ public abstract class Dusman extends Karakter{
         return min_index;
     }
 
-    int sayac = 0;
     // Function to print shortest
     // path from source to j
     // using parent array
@@ -96,11 +95,11 @@ public abstract class Dusman extends Karakter{
     void printSolution(int dist[], ArrayList<Integer> path, int src, int parent[],int destination)
     {
         path.add(0,src);
-        System.out.println("Vertex\t Distance\tPath");
+        //System.out.println("Vertex\t Distance\tPath");
         for (int i = 1; i < V; i++) // Here I changed 1 for 0 so it would show the path to 0 in case src is not 0
         {
             if((i != src) && (i == destination)){
-                System.out.println(String.format("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i], src));
+                //System.out.println(String.format("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i], src));
 
                 printPath(parent,path, i,src);
             }

@@ -5,7 +5,6 @@ import Game.States.GameState;
 import Game.Karakterler.Oyuncu;
 
 import java.awt.*;
-import java.util.Timer;
 import java.util.TimerTask;
 
 import static Game.States.GameState.AltinListesi;
@@ -21,7 +20,7 @@ public class Altin extends Obje{
 
     public static void AltinCollisionDetection(){
         for(int i=0;i<5;i++){
-            if((AltinListesi[i].sutun == Oyuncu.sira) && (AltinListesi[i].satir == Oyuncu.sutun) )
+            if((AltinListesi[i].sutun == Oyuncu.satir) && (AltinListesi[i].satir == Oyuncu.sutun) )
             {
                 AltinListesi[i].used = true;
                 AltinListesi[i].satir = 0;

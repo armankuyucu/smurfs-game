@@ -12,7 +12,6 @@ import java.util.TimerTask;
 import static Game.States.GameState.mantar;
 
 public class Mantar extends Obje{
-    Timer timer2 = new Timer();
 
     public Mantar(int olusmaSuresi, int satir, int sutun,boolean used) {
         super(olusmaSuresi, satir, sutun,used);
@@ -34,7 +33,7 @@ public class Mantar extends Obje{
     }
 
     public static void MantarCollisionDetection(){
-        if((mantar.sutun == Oyuncu.sira) && (mantar.satir == Oyuncu.sutun)){
+        if((mantar.sutun == Oyuncu.satir) && (mantar.satir == Oyuncu.sutun)){
             Puan.Skor += 50;
             mantar.used = true;
             mantar.satir = 0;

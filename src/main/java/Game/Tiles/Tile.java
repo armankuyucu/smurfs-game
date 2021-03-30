@@ -26,10 +26,6 @@ public class Tile {
         tiles[id] = this;
     }
 
-    public boolean isSolid(){
-        return false;
-    }
-
     public int getId(){
         return id;
     }

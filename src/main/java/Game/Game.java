@@ -61,7 +61,7 @@ public class Game implements Runnable {
         if(State.getState() != null){
             State.getState().update();
         }
-        if(Oyuncu.sutun == 12 && Oyuncu.sira == 7){
+        if(Oyuncu.sutun == 12 && Oyuncu.satir == 7){
             winningState = new WinningState(this);
             State.setState(winningState);
         }

@@ -19,7 +19,7 @@ public class WinningState extends State{
     @Override
     public void render(Graphics g) {
         g.create(0,0,832,704);
-        g.setColor(Color.ORANGE);
+        g.setColor(Color.BLUE);
         g.setFont(new Font("TimesRoman", Font.ITALIC, 100));
         g.drawString("Kazandiniz! ",175,250);
 

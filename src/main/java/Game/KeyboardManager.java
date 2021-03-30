@@ -1,5 +1,4 @@
 package Game;
-import Game.Karakterler.Azman;
 import Game.Karakterler.Dusman;
 import Game.Karakterler.Gargamel;
 import Game.Karakterler.Oyuncu;
@@ -33,34 +32,34 @@ public class KeyboardManager implements KeyListener{
                 Gargamel.pressed2 = true;
 
                 if(MenuState.ButtonID == 2){
-                    Oyuncu.sira--;
+                    Oyuncu.satir--;
 
-                    if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
+                    if((Oyuncu.satir >= 0 && Oyuncu.satir < 11) && GameState.map[Oyuncu.satir][Oyuncu.sutun] == 1)
                         Oyuncu.y -= 64;
                     else
-                        Oyuncu.sira++;
+                        Oyuncu.satir++;
                 }
                 else if(MenuState.ButtonID == 1){
-                    siraTemp = Oyuncu.sira - 2;
+                    siraTemp = Oyuncu.satir - 2;
                     sutunTemp = Oyuncu.sutun;
                     if(siraTemp == -1)
                         siraTemp = 0;
 
                     if(GameState.map[siraTemp][sutunTemp] == 1 && (siraTemp > 0 && sutunTemp < 11)){
-                        Oyuncu.sira--;
-                        if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
+                        Oyuncu.satir--;
+                        if((Oyuncu.satir >= 0 && Oyuncu.satir < 11) && GameState.map[Oyuncu.satir][Oyuncu.sutun] == 1)
                             Oyuncu.y -= 64;
                         else
-                            Oyuncu.sira++;
+                            Oyuncu.satir++;
 
                         Altin.AltinCollisionDetection();
                         Mantar.MantarCollisionDetection();
 
-                        Oyuncu.sira--;
-                        if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
+                        Oyuncu.satir--;
+                        if((Oyuncu.satir >= 0 && Oyuncu.satir < 11) && GameState.map[Oyuncu.satir][Oyuncu.sutun] == 1)
                             Oyuncu.y -= 64;
                         else
-                            Oyuncu.sira++;
+                            Oyuncu.satir++;
                     }
                 }
             }
@@ -69,37 +68,37 @@ public class KeyboardManager implements KeyListener{
                 Dusman.pressed = true;
                 Gargamel.pressed2 = true;
 
-                siraTemp = Oyuncu.sira + 2;
+                siraTemp = Oyuncu.satir + 2;
                 sutunTemp = Oyuncu.sutun;
                 if(siraTemp == 11){ // Matrix out of bounds hatasini vermemesi icin
                     siraTemp = 10;
                 }
 
                 if(MenuState.ButtonID == 2){
-                    Oyuncu.sira++;
+                    Oyuncu.satir++;
 
-                    if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
+                    if((Oyuncu.satir >= 0 && Oyuncu.satir < 11) && GameState.map[Oyuncu.satir][Oyuncu.sutun] == 1)
                         Oyuncu.y += 64;
                     else
-                        Oyuncu.sira--;
+                        Oyuncu.satir--;
                 }
 
                 else if(MenuState.ButtonID == 1){
                     if(GameState.map[siraTemp][sutunTemp] == 1){
-                        Oyuncu.sira++;
-                        if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
+                        Oyuncu.satir++;
+                        if((Oyuncu.satir >= 0 && Oyuncu.satir < 11) && GameState.map[Oyuncu.satir][Oyuncu.sutun] == 1)
                             Oyuncu.y += 64;
                         else
-                            Oyuncu.sira--;
+                            Oyuncu.satir--;
 
                         Altin.AltinCollisionDetection();
                         Mantar.MantarCollisionDetection();
 
-                        Oyuncu.sira++;
-                        if((Oyuncu.sira >= 0 && Oyuncu.sira < 11) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
+                        Oyuncu.satir++;
+                        if((Oyuncu.satir >= 0 && Oyuncu.satir < 11) && GameState.map[Oyuncu.satir][Oyuncu.sutun] == 1)
                             Oyuncu.y += 64;
                         else
-                            Oyuncu.sira--;
+                            Oyuncu.satir--;
                     }
 
                 }
@@ -110,7 +109,7 @@ public class KeyboardManager implements KeyListener{
                 Dusman.pressed = true;
                 Gargamel.pressed2 = true;
 
-                siraTemp = Oyuncu.sira;
+                siraTemp = Oyuncu.satir;
                 sutunTemp = Oyuncu.sutun-2;
                 if(sutunTemp == -1){
                     sutunTemp = 0;
@@ -119,7 +118,7 @@ public class KeyboardManager implements KeyListener{
                     if(MenuState.ButtonID == 2){
                         Oyuncu.sutun--;
 
-                        if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
+                        if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.satir][Oyuncu.sutun] == 1)
                             Oyuncu.x -= 64;
                         else
                             Oyuncu.sutun++;
@@ -128,7 +127,7 @@ public class KeyboardManager implements KeyListener{
                     else if(MenuState.ButtonID == 1){
                         if(GameState.map[siraTemp][sutunTemp] == 1){
                             Oyuncu.sutun--;
-                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
+                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.satir][Oyuncu.sutun] == 1)
                                 Oyuncu.x -= 64;
                             else
                                 Oyuncu.sutun++;
@@ -137,7 +136,7 @@ public class KeyboardManager implements KeyListener{
                             Mantar.MantarCollisionDetection();
 
                             Oyuncu.sutun--;
-                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
+                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.satir][Oyuncu.sutun] == 1)
                                 Oyuncu.x -= 64;
                             else
                                 Oyuncu.sutun++;
@@ -150,7 +149,7 @@ public class KeyboardManager implements KeyListener{
                 Dusman.pressed = true;
                 Gargamel.pressed2 = true;
 
-                siraTemp = Oyuncu.sira;
+                siraTemp = Oyuncu.satir;
                 sutunTemp = Oyuncu.sutun + 2;
                 if(sutunTemp == 14 || sutunTemp == 13){
                     sutunTemp = 12;
@@ -158,7 +157,7 @@ public class KeyboardManager implements KeyListener{
 
                     if(MenuState.ButtonID == 2){
                         Oyuncu.sutun++;
-                        if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
+                        if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.satir][Oyuncu.sutun] == 1)
                             Oyuncu.x += 64;
                         else
                             Oyuncu.sutun--;
@@ -166,7 +165,7 @@ public class KeyboardManager implements KeyListener{
                     else if(MenuState.ButtonID == 1){
                         if(GameState.map[siraTemp][sutunTemp] == 1){
                             Oyuncu.sutun++;
-                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
+                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.satir][Oyuncu.sutun] == 1)
                                 Oyuncu.x += 64;
                             else
                                 Oyuncu.sutun--;
@@ -175,7 +174,7 @@ public class KeyboardManager implements KeyListener{
                             Mantar.MantarCollisionDetection();
 
                             Oyuncu.sutun++;
-                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.sira][Oyuncu.sutun] == 1)
+                            if((Oyuncu.sutun >=0 && Oyuncu.sutun < 13) && GameState.map[Oyuncu.satir][Oyuncu.sutun] == 1)
                                 Oyuncu.x += 64;
                             else
                                 Oyuncu.sutun--;
