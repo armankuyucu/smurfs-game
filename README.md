@@ -9,3 +9,5 @@ Kullanıcının seçmiş olduğu oyunculardan biri Şirine’ye ulaşmaya çalı
 * Bu esnada oyuncuların hareketlerine bağlı olarak dinamik en kısa yol bulanarak ekranda gösterilmektedir.
 
 Projede istenene dair detaylı bilgiler [proje dokümanında](https://github.com/armankuyucu/ProLab2Proje1/blob/master/Programlama%20Lab.%20II%20Proje%201-%202020-21%20Bahar%20.pdf) bulunabilir.
+
+![image](https://user-images.githubusercontent.com/74271517/160305161-9022b42b-023a-4758-9ac2-58449ee6724a.png)
