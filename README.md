@@ -1,6 +1,6 @@
 <!-- Headings -->
 # Şirinler Oyunu
-Oyun Java programla dili kullanılarak nesneye yönelik programlama mantığı ile geliştirildi. Kullanıcı oyuna başlamadan gözlüklü veya tembel şirin olmak üzere iki karaktarden birini seçer.
+Oyun Java programlama dili kullanılarak nesneye yönelik programlama mantığı ile geliştirildi. Kullanıcı oyuna başlamadan gözlüklü veya tembel şirin olmak üzere iki karaktarden birini seçer.
 
 Düşman karakterler: Gargamel ve Azman isimli iki farklı düşman karakter bulunmaktadır.Gargamel tek bir harekette iki birim birden ilerlemektedir. Azman ise her hamlede bir birim ilerler.
 
